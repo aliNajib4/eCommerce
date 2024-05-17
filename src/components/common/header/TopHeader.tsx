@@ -1,12 +1,17 @@
+import { Link } from "react-router-dom";
+
 const pages = [
   {
     name: "blog",
+    path: "/",
   },
   {
     name: "about us",
+    path: "/about-us",
   },
   {
     name: "careers",
+    path: "/",
   },
 ];
 
@@ -20,12 +25,12 @@ const TopHeader = () => {
       </div>
       <nav>
         <ul className="flex items-center gap-5">
-          {pages.map(({ name }, idx) => (
+          {pages.map(({ name, path }, idx) => (
             <li
               key={idx}
               className="cursor-pointer text-xl font-semibold capitalize text-emerald-400 duration-300 hover:text-emerald-300"
             >
-              {name}
+              <Link to={path}>{name}</Link>
             </li>
           ))}
         </ul>

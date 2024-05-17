@@ -3,11 +3,12 @@ import {
   MdOutlineAccountCircle as Account,
   MdOutlineShoppingBag as ShoppingBag,
 } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const MainHeader = () => {
   return (
     <div className="flex items-center justify-between">
-      <h1 className="py-10 text-4xl font-bold uppercase">logo</h1>
+      <Link className="py-10 text-4xl font-bold uppercase">logo</Link>
       <TextField id="outlined" label="search" />
       <div className="flex items-center gap-5">
         <div>
