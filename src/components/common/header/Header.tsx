@@ -4,7 +4,7 @@ import TopHeader from "./TopHeader";
 
 const Header = () => {
   return (
-    <header>
+    <header className="mb-10">
       <TopHeader />
       <MainHeader />
       <CategoriesHeadre />
