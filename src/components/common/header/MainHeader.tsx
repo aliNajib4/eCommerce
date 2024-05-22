@@ -8,7 +8,9 @@ import { Link } from "react-router-dom";
 const MainHeader = () => {
   return (
     <div className="flex items-center justify-between">
-      <Link className="py-10 text-4xl font-bold uppercase">logo</Link>
+      <Link to="/" className="py-10 text-4xl font-bold uppercase">
+        logo
+      </Link>
       <TextField id="outlined" label="search" />
       <div className="flex items-center gap-5">
         <div>
