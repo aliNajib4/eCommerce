@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 
 const App = () => {
   return (
-    <div className="container flex flex-col min-h-screen font-mono">
+    <div className="container flex min-h-screen flex-col font-mono">
       <Provider store={store}>
         <Header />
         <main className="flex-grow">

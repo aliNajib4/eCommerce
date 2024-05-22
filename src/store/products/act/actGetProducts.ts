@@ -19,7 +19,7 @@ const actGetProducts = createAsyncThunk(
         error = true;
         errorMag = err.message;
       });
-      return error ? rejectWithValue(errorMag) : data;
+    return error ? rejectWithValue(errorMag) : data;
   },
 );
 

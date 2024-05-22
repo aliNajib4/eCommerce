@@ -18,9 +18,7 @@ const initialState: ICategoriesState = {
 const categoriesSlice = createSlice({
   name: "categories",
   initialState,
-  reducers: {
-
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(actGetCategories.pending, (state) => {
