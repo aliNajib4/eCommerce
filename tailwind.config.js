@@ -6,7 +6,11 @@ export default {
       center: true,
       padding: "0.5rem",
     },
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        "auto-fit-250": "repeat(auto-fit, minmax(300px, 1fr))",
+      },
+    },
   },
   plugins: [],
 };
