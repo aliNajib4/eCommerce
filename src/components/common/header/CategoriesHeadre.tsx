@@ -3,15 +3,19 @@ import { Link } from "react-router-dom";
 const Categories = [
   {
     name: "women",
-    path: "/",
+    path: "/categories/products/women",
   },
   {
     name: "men",
-    path: "/",
+    path: "/categories/products/men",
   },
   {
     name: "kids",
-    path: "/",
+    path: "/categories/products/kids",
+  },
+  {
+    name: "all",
+    path: "/categories",
   },
 ];
 

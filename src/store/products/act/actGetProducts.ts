@@ -6,12 +6,14 @@ type TData = IProduct[];
 
 const actGetProducts = createAsyncThunk(
   "products/actGetProducts",
-  async (_, { rejectWithValue }) => {
+  async (params: string, { rejectWithValue }) => {
     let data: TData = [];
     let error = false;
     let errorMag = "";
     await axios
-      .get<TData>("http://localhost:5005/products")
+      .get<TData>(
+        `http://localhost:5005/products?cat_prefix=${params === "all" ? "" : params}`,
+      )
       .then((res) => {
         data = res.data;
       })

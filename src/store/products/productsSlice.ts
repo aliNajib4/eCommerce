@@ -22,6 +22,7 @@ const productsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(actGetProducts.pending, (state) => {
+        state.records = [];
         state.loading = "pending";
         state.error = null;
       })

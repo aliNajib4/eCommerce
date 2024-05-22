@@ -2,13 +2,15 @@ import { Product } from "@components/.";
 import { useAppSelector, useAppDispatch } from "@store/hooks";
 import { actGetProducts } from "@store/products/productsSlice";
 import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 const Products = () => {
+  const params = useParams();
   const { loading, error, records } = useAppSelector((state) => state.products);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    if (records.length === 0) dispatch(actGetProducts());
-  }, [dispatch, records]);
+    dispatch(actGetProducts(params.id ? params.id : "all"));
+  }, [dispatch, params.id]);
   return (
     <div>
       {loading === "succeeded" ? (
