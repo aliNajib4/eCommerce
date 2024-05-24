@@ -1,4 +1,4 @@
-import { Product } from "@components/.";
+import { Loading, Product, GridList } from "@components/.";
 import { useAppSelector, useAppDispatch } from "@store/hooks";
 import { actGetProducts } from "@store/products/productsSlice";
 import { useEffect } from "react";
@@ -13,21 +13,12 @@ const Products = () => {
   }, [dispatch, params.id]);
   return (
     <div>
-      {loading === "succeeded" ? (
-        <div className="grid grid-cols-auto-fit-250 gap-10 px-10 ">
-          {records.map((product) => (
-            <Product key={product.id} {...product} />
-          ))}
-        </div>
-      ) : loading === "pending" || loading === "idle" ? (
-        <p className="text-center text-3xl font-bold text-emerald-500">
-          Loading...
-        </p>
-      ) : (
-        <p className="text-center text-3xl font-bold text-red-500">
-          No products found
-        </p>
-      )}
+      <Loading status={loading} error={error}>
+        <GridList
+          records={records}
+          recordItem={(record) => <Product {...record} />}
+        />
+      </Loading>
     </div>
   );
 };
