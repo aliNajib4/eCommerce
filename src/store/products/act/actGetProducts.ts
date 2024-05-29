@@ -11,9 +11,7 @@ const actGetProducts = createAsyncThunk(
     let error = false;
     let errorMag = "";
     await axios
-      .get<TData>(
-        `http://localhost:5005/products?cat_prefix=${params === "all" ? "" : params}`,
-      )
+      .get<TData>(`/products?cat_prefix=${params === "all" ? "" : params}`)
       .then((res) => {
         data = res.data;
       })

@@ -3,6 +3,7 @@ import { Header, Footer } from "@components/.";
 import { store, persistor } from "@store/store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
+import "@services/axios-global";
 
 const App = () => {
   return (

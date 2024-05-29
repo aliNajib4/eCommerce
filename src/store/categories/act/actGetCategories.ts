@@ -11,7 +11,7 @@ const actGetCategories = createAsyncThunk(
     let error = false;
     let errorMag = "";
     await axios
-      .get<TData>("http://localhost:5005/categories")
+      .get<TData>("/categories")
       .then((res) => {
         data = res.data;
       })
