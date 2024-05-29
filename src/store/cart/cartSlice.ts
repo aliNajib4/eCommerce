@@ -1,11 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { TLoadingCategories as TLoading } from "@types/loadingCategories";
+import { IProduct } from "@types/product";
+import actGetCartProducts from "./act/actGetCartProducts";
+
 
 interface ICartState {
   items: { id: string; quantity: number }[];
+  productsFullinfo: IProduct[];
+  loading: TLoading;
+  error: null | string;
+
 }
 
 const initialState: ICartState = {
   items: [],
+  productsFullinfo: [],
+  loading: "idle",
+  error: null
 };
 
 const cartSlice = createSlice({
@@ -28,6 +39,21 @@ const cartSlice = createSlice({
       state.items = state.items.filter((item) => item.id !== action.payload);
     },
   },
+  extraReducers: (builder) => {
+    builder
+      .addCase(actGetCartProducts.pending, (state) => {
+        state.loading = "pending";
+        state.error = null;
+      })
+      .addCase(actGetCartProducts.fulfilled, (state, action) => {
+        state.loading = "succeeded";
+        state.productsFullinfo = action.payload;
+      })
+      .addCase(actGetCartProducts.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.error.message as string;
+      });
+  }
 });
 
 export default cartSlice.reducer;
