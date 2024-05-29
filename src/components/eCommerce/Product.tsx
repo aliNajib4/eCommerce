@@ -2,13 +2,19 @@ import { Button } from "@mui/material";
 import { addToCart } from "@store/cart/cartSlice";
 import { useAppDispatch } from "@store/hooks";
 import { IProduct } from "@types/product";
+import { useState } from "react";
 
 const Product = ({ id, img, title, price }: IProduct) => {
   const dispatch = useAppDispatch();
+  const [isDisabled, setIsDisabled] = useState(false);
+
   const handleAdd = () => {
     dispatch(addToCart(id));
+    setIsDisabled(true);
+    setTimeout(() => {
+      setIsDisabled(false);
+    }, 300);
   };
-
   return (
     <div className="m-auto">
       <div className="m-auto max-h-32 max-w-32 overflow-hidden rounded-full text-center">
@@ -28,8 +34,13 @@ const Product = ({ id, img, title, price }: IProduct) => {
           <p className="">{price} EGP</p>
         </div>
       </div>
-      <Button variant="contained" className="w-full" onClick={handleAdd}>
-        Add to cart
+      <Button
+        variant="contained"
+        className="w-full"
+        onClick={handleAdd}
+        disabled={isDisabled}
+      >
+        {isDisabled ? "loading..." : "Add to cart"}
       </Button>
     </div>
   );
