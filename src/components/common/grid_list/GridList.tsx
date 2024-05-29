@@ -5,7 +5,7 @@ type TGridListProps<T> = {
   recordItem: (recordItem: T) => ReactNode;
 };
 
-const GridList = <T extends { id?: string }>({
+const GridList = <T extends { id: string }>({
   records,
   recordItem,
 }: TGridListProps<T>) => {

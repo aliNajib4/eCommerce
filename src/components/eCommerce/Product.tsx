@@ -2,11 +2,13 @@ import { Button } from "@mui/material";
 import { addToCart } from "@store/cart/cartSlice";
 import { useAppDispatch } from "@store/hooks";
 import { IProduct } from "@types/product";
-import { useState } from "react";
+import { useState, memo } from "react";
 
-const Product = ({ id, img, title, price }: IProduct) => {
+const Product = memo(({ id, img, title, price, quantity, max }: IProduct) => {
   const dispatch = useAppDispatch();
   const [isDisabled, setIsDisabled] = useState(false);
+
+  const quantityReachedToMax = max - quantity <= 0 ? true : false;
 
   const handleAdd = () => {
     dispatch(addToCart(id));
@@ -14,6 +16,7 @@ const Product = ({ id, img, title, price }: IProduct) => {
     setTimeout(() => {
       setIsDisabled(false);
     }, 300);
+    if (quantity <= 0) setIsDisabled(true);
   };
   return (
     <div className="m-auto">
@@ -33,17 +36,23 @@ const Product = ({ id, img, title, price }: IProduct) => {
           </span>
           <p className="">{price} EGP</p>
         </div>
+        <div className="flex items-center justify-between gap-5">
+          <span className="text-2xl font-bold uppercase text-neutral-800">
+            quantity:
+          </span>
+          <p className="">{max - quantity}</p>
+        </div>
       </div>
       <Button
         variant="contained"
         className="w-full"
         onClick={handleAdd}
-        disabled={isDisabled}
+        disabled={isDisabled || quantityReachedToMax}
       >
         {isDisabled ? "loading..." : "Add to cart"}
       </Button>
     </div>
   );
-};
+});
 
 export default Product;

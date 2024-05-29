@@ -5,4 +5,5 @@ export interface IProduct {
   cat_prefix: string;
   img: string;
   max: number;
+  quantity?: number;
 }
