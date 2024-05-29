@@ -1,8 +1,14 @@
 import { Button } from "@mui/material";
+import { addToCart } from "@store/cart/cartSlice";
+import { useAppDispatch } from "@store/hooks";
 import { IProduct } from "@types/product";
 
-const Product = ({ img, title, price }: IProduct) => {
-  console.log(img, title, price);
+const Product = ({ id, img, title, price }: IProduct) => {
+  const dispatch = useAppDispatch();
+  const handleAdd = () => {
+    dispatch(addToCart(id));
+  };
+
   return (
     <div className="m-auto">
       <div className="m-auto max-h-32 max-w-32 overflow-hidden rounded-full text-center">
@@ -11,18 +17,18 @@ const Product = ({ img, title, price }: IProduct) => {
       <div className="m-8">
         <div className="flex items-center justify-between gap-5">
           <span className="text-2xl font-bold uppercase text-neutral-800">
-            name:{" "}
+            name:
           </span>
           <p className="">{title}</p>
         </div>
         <div className="flex items-center justify-between gap-5">
           <span className="text-2xl font-bold uppercase text-neutral-800">
-            price:{" "}
+            price:
           </span>
           <p className="">{price} EGP</p>
         </div>
       </div>
-      <Button variant="contained" className="w-full">
+      <Button variant="contained" className="w-full" onClick={handleAdd}>
         Add to cart
       </Button>
     </div>
