@@ -1,8 +1,8 @@
-import { TLoadingCategories } from "@types/loadingCategories";
+import { TLoading } from "@types/loadingCategories";
 
 type TLoadingProps = {
   error: string | null;
-  status: TLoadingCategories;
+  status: TLoading;
   children: React.ReactNode;
 };
 
