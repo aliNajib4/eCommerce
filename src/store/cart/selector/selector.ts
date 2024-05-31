@@ -6,4 +6,15 @@ const quantitySeletor = createSelector(
   (items) => items.reduce((total, item) => total + item.quantity, 0),
 );
 
-export { quantitySeletor };
+const allPriceSeletor = createSelector(
+  (state: RootState) => state.cart,
+  ({ productsFullinfo: products, items }) =>
+    products.reduce(
+      (total, { price, id }) =>
+        total +
+        +price * (items.find(({ id: id2 }) => id === id2)?.quantity ?? 0),
+      0,
+    ),
+);
+
+export { quantitySeletor, allPriceSeletor };
