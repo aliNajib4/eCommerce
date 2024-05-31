@@ -3,20 +3,18 @@ import { TLoading } from "@types/loadingCategories";
 import { IProduct } from "@types/product";
 import actGetCartProducts from "./act/actGetCartProducts";
 
-
 interface ICartState {
   items: { id: string; quantity: number }[];
   productsFullinfo: IProduct[];
   loading: TLoading;
   error: null | string;
-
 }
 
 const initialState: ICartState = {
   items: [],
   productsFullinfo: [],
   loading: "idle",
-  error: null
+  error: null,
 };
 
 const cartSlice = createSlice({
@@ -37,6 +35,17 @@ const cartSlice = createSlice({
     },
     removeFromCart: (state, action) => {
       state.items = state.items.filter((item) => item.id !== action.payload);
+      state.productsFullinfo = state.productsFullinfo.filter(
+        (item) => item.id !== action.payload,
+      );
+    },
+    changeQuantity: (state, action) => {
+      state.items = state.items.map((item) => {
+        if (item.id === action.payload.id) {
+          return { ...item, quantity: action.payload.quantity };
+        }
+        return item;
+      });
     },
   },
   extraReducers: (builder) => {
@@ -53,8 +62,8 @@ const cartSlice = createSlice({
         state.loading = "failed";
         state.error = action.error.message as string;
       });
-  }
+  },
 });
 
 export default cartSlice.reducer;
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, changeQuantity } = cartSlice.actions;

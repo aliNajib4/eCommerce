@@ -9,7 +9,7 @@ type TLoadingProps = {
 const Loading = ({ error, status, children }: TLoadingProps) => {
   if (status === "pending") {
     return (
-      <p className="text-3xl font-bold text-center text-emerald-500">
+      <p className="text-center text-3xl font-bold text-emerald-500">
         Loading...
       </p>
     );

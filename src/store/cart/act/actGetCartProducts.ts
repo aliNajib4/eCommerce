@@ -21,8 +21,8 @@ const actGetCartProducts = createAsyncThunk(
         return res.data;
       })
       .then((allProducts) => {
-        data = allProducts.filter(
-          (el) => cart.items.some((item) => item.id === el.id),
+        data = allProducts.filter((el) =>
+          cart.items.some((item) => item.id === el.id),
         );
       })
       .catch((err) => {

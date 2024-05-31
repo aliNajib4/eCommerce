@@ -8,6 +8,7 @@ import {
   Login,
   Register,
   Error,
+  Cart,
 } from "@pages/.";
 
 const router = createBrowserRouter([
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
         path: "/",
         index: true,
         element: <Home />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/categories/products/:id",

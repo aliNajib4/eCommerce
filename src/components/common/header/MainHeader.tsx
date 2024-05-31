@@ -35,17 +35,19 @@ const MainHeader = () => {
         <div>
           <Account size={32} />
         </div>
-        <div className="relative">
-          <ShoppingBag size={32} />
-          <div
-            className={
-              "absolute -bottom-2 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500" +
-              (isAdd ? " animate-pumping" : "")
-            }
-          >
-            <span className="text-xs text-white">{quantity}</span>
+        <Link to="/cart">
+          <div className="relative">
+            <ShoppingBag size={32} />
+            <div
+              className={
+                "absolute -bottom-2 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500" +
+                (isAdd ? " animate-pumping" : "")
+              }
+            >
+              <span className="text-xs text-white">{quantity}</span>
+            </div>
           </div>
-        </div>
+        </Link>
       </div>
     </div>
   );

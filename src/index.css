@@ -5,3 +5,9 @@
 #root {
   @apply min-h-screen;
 }
+
+@layer base {
+  .minName {
+    @apply text-xl font-bold capitalize;
+  }
+}
