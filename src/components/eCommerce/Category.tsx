@@ -2,7 +2,6 @@ import { ICategory } from "@types/category";
 import { Link } from "react-router-dom";
 
 const Category = ({ img, prefix, title }: ICategory) => {
-  console.log(img, prefix, title);
   return (
     <div className="m-auto">
       <Link to={`/categories/products/${prefix}`}>

@@ -15,7 +15,6 @@ const Products = () => {
       quantity: items.find((id) => id.id === el.id)?.quantity || 0,
     };
   });
-  console.log(productsFullInfo);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(actGetProducts(params.id ? params.id : "all"));

@@ -5,7 +5,8 @@ import {
   quantitySeletor,
 } from "@store/cart/selector/selector";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
+import { changeQuantity, removeFromCart } from "@store/cart/cartSlice";
 
 const Cart = () => {
   const dispach = useAppDispatch();
@@ -22,6 +23,20 @@ const Cart = () => {
     };
   });
 
+  const handelQuantity = useCallback(
+    (id: string, quantity: number) => {
+      dispach(changeQuantity({ id, quantity }));
+    },
+    [dispach],
+  );
+
+  const deleteItem = useCallback(
+    (id: string) => {
+      dispach(removeFromCart(id));
+    },
+    [dispach],
+  );
+
   useEffect(() => {
     dispach(actGetCartProducts());
   }, [dispach]);
@@ -29,7 +44,12 @@ const Cart = () => {
     <div>
       <Loading status={loading} error={error}>
         {products.map((el) => (
-          <CartItem key={el.id} {...el} />
+          <CartItem
+            key={el.id}
+            {...el}
+            deleteItem={deleteItem}
+            changeQuantity={handelQuantity}
+          />
         ))}
         <div className="flex items-center justify-between">
           <span>Total: </span>
