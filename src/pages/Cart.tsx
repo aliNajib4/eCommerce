@@ -1,15 +1,19 @@
 import { CartItem, Loading } from "@components/index";
-import actGetCartProducts from "@store/cart/act/actGetCartProducts";
 import {
   allPriceSeletor,
   CartQuantitySeletor,
 } from "@store/cart/selector/selector";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { useCallback, useEffect } from "react";
-import { changeQuantity, removeFromCart } from "@store/cart/cartSlice";
+import {
+  changeQuantity,
+  removeFromCart,
+  cleanUp,
+  actGetCartProducts,
+} from "@store/cart/cartSlice";
 
 const Cart = () => {
-  const dispach = useAppDispatch();
+  const dispatch = useAppDispatch();
   const { productsFullinfo, items, loading, error } = useAppSelector(
     (state) => state.cart,
   );
@@ -25,21 +29,24 @@ const Cart = () => {
 
   const handelQuantity = useCallback(
     (id: string, quantity: number) => {
-      dispach(changeQuantity({ id, quantity }));
+      dispatch(changeQuantity({ id, quantity }));
     },
-    [dispach],
+    [dispatch],
   );
 
   const deleteItem = useCallback(
     (id: string) => {
-      dispach(removeFromCart(id));
+      dispatch(removeFromCart(id));
     },
-    [dispach],
+    [dispatch],
   );
 
   useEffect(() => {
-    dispach(actGetCartProducts());
-  }, [dispach]);
+    dispatch(actGetCartProducts());
+    return () => {
+      dispatch(cleanUp());
+    };
+  }, [dispatch]);
   return (
     <div>
       <Loading status={loading} error={error}>
