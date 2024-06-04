@@ -6,10 +6,10 @@ import {
   Select,
   SelectChangeEvent,
 } from "@mui/material";
-import { IProduct } from "@types/product";
+import { TProduct } from "@types/product";
 import { memo } from "react";
 
-type TcartItem = IProduct & {
+type TcartItem = TProduct & {
   deleteItem: (id: string) => void;
   changeQuantity: (id: string, quantity: number) => void;
 };

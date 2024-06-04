@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import type { IProduct } from "@types/product";
+import type { TProduct } from "@types/product";
 
-type TData = IProduct[];
+type TData = TProduct[];
 
 const actGetProducts = createAsyncThunk(
   "products/actGetProducts",

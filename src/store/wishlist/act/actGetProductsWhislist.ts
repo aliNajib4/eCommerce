@@ -1,9 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { IProduct } from "@types/product";
+import { TProduct } from "@types/product";
 import axios from "axios";
 
 type TWishlist = { productId: string; userId: string; id: string }[];
-type TData = IProduct[];
+type TData = TProduct[];
 
 const actGetProductsWhislist = createAsyncThunk(
   "wishlist/actGetProductsWhislist",
@@ -18,7 +18,7 @@ const actGetProductsWhislist = createAsyncThunk(
       })
       .then(async (wishlistIds) => {
         await axios
-          .get<IProduct[]>("/products")
+          .get<TProduct[]>("/products")
           .then((res) => res.data)
           .then((allProducts) => {
             data = allProducts.filter((el) =>

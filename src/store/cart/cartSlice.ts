@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { TLoading } from "@types/loadingCategories";
-import { IProduct } from "@types/product";
+import { TProduct } from "@types/product";
 import actGetCartProducts from "./act/actGetCartProducts";
 
 interface ICartState {
   items: { id: string; quantity: number }[];
-  productsFullinfo: IProduct[];
+  productsFullinfo: TProduct[];
   loading: TLoading;
   error: null | string;
 }

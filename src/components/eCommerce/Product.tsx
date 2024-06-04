@@ -2,10 +2,10 @@ import { Button } from "@mui/material";
 import { addToCart } from "@store/cart/cartSlice";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { actToggleWishlistItem } from "@store/wishlist/wishlistSlice";
-import { IProduct } from "@types/product";
+import { TProduct } from "@types/product";
 import { useState, memo } from "react";
 
-const Product = memo(({ id, img, title, price, quantity, max }: IProduct) => {
+const Product = memo(({ id, img, title, price, quantity, max }: TProduct) => {
   const dispatch = useAppDispatch();
   const [isDisabled, setIsDisabled] = useState(false);
   const isLiked = useAppSelector((state) => state.wishlist.itemsId).includes(

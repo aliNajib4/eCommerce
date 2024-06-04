@@ -1,9 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "@store/store";
-import { IProduct } from "@types/product";
+import { TProduct } from "@types/product";
 import axios from "axios";
 
-type TData = IProduct[];
+type TData = TProduct[];
 
 const actGetCartProducts = createAsyncThunk(
   "cart/actGetCartProducts",

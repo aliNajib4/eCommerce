@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import type { ICategory } from "@types/category";
+import type { TCategory } from "@types/category";
 
-type TData = ICategory[];
+type TData = TCategory[];
 
 const actGetCategories = createAsyncThunk(
   "categories/actGetCategories",
