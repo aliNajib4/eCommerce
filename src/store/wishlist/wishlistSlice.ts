@@ -23,7 +23,10 @@ const wishSlice = createSlice({
   initialState,
   reducers: {
     cleanUp: (state) => {
-      state.productsFullInfo = [];
+      const { productsFullInfo, error, loadingProducts } = initialState;
+      state.productsFullInfo = productsFullInfo;
+      state.error = error;
+      state.loadingProducts = loadingProducts;
     },
   },
   extraReducers: (builder) => {

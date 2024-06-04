@@ -18,6 +18,9 @@ const Products = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(actGetProducts(params.id ? params.id : "all"));
+    return () => {
+      dispatch(cleanUp);
+    };
   }, [dispatch, params.id]);
   return (
     <div>

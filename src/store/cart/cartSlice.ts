@@ -48,7 +48,10 @@ const cartSlice = createSlice({
       });
     },
     cleanUp: (state) => {
-      state.productsFullinfo = [];
+      const { productsFullinfo, error, loading } = initialState;
+      state.productsFullinfo = productsFullinfo;
+      state.error = error;
+      state.loading = loading;
     },
   },
   extraReducers: (builder) => {

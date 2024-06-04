@@ -18,7 +18,11 @@ const initialState: TProductsState = {
 const productsSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {},
+  reducers: {
+    cleanUp: (state) => {
+      Object.assign(state, initialState);
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(actGetProducts.pending, (state) => {
@@ -38,4 +42,5 @@ const productsSlice = createSlice({
 });
 
 export { actGetProducts };
+export const { cleanUp } = productsSlice.actions;
 export default productsSlice.reducer;

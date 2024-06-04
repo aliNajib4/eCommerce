@@ -1,5 +1,5 @@
 import { Category, Loading } from "@components/.";
-import { actGetCategories } from "@store/categories/categoriesSlice";
+import { actGetCategories, cleanUp } from "@store/categories/categoriesSlice";
 import { useAppSelector, useAppDispatch } from "@store/hooks";
 import { useEffect } from "react";
 
@@ -10,8 +10,11 @@ const Categories = () => {
   );
 
   useEffect(() => {
-    if (records.length === 0) dispatch(actGetCategories());
-  }, [dispatch, records]);
+    dispatch(actGetCategories());
+    return () => {
+      dispatch(cleanUp());
+    };
+  }, [dispatch]);
 
   return (
     <div>
