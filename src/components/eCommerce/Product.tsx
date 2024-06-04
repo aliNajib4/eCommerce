@@ -1,25 +1,45 @@
 import { Button } from "@mui/material";
 import { addToCart } from "@store/cart/cartSlice";
-import { useAppDispatch } from "@store/hooks";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { actToggleWishlistItem } from "@store/wishlist/wishlistSlice";
 import { IProduct } from "@types/product";
 import { useState, memo } from "react";
 
 const Product = memo(({ id, img, title, price, quantity, max }: IProduct) => {
   const dispatch = useAppDispatch();
   const [isDisabled, setIsDisabled] = useState(false);
+  const isLiked = useAppSelector((state) => state.wishlist.itemsId).includes(
+    id,
+  );
+  const [loading, setLoading] = useState(false);
 
   const quantityReachedToMax = max - quantity <= 0 ? true : false;
 
   const handleAdd = () => {
     dispatch(addToCart(id));
     setIsDisabled(true);
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       setIsDisabled(false);
     }, 300);
     if (quantity <= 0) setIsDisabled(true);
+    return () => clearTimeout(timeout);
   };
+
+  const handleLike = () => {
+    if (loading) return;
+    setLoading(true);
+    dispatch(actToggleWishlistItem(id))
+      .unwrap()
+      .then(() => {
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
+  };
+
   return (
-    <div className="m-auto">
+    <div className="h-full w-full">
       <div className="m-auto max-h-32 max-w-32 overflow-hidden rounded-full text-center">
         <img src={img} alt={title} />
       </div>
@@ -43,14 +63,22 @@ const Product = memo(({ id, img, title, price, quantity, max }: IProduct) => {
           <p className="">{max - quantity}</p>
         </div>
       </div>
-      <Button
-        variant="contained"
-        className="w-full"
-        onClick={handleAdd}
-        disabled={isDisabled || quantityReachedToMax}
-      >
-        {isDisabled ? "loading..." : "Add to cart"}
-      </Button>
+      <div className="flex items-center gap-3">
+        <Button
+          variant="contained"
+          className="grow"
+          disabled={isDisabled || quantityReachedToMax}
+          onClick={handleAdd}
+        >
+          {isDisabled ? "loading..." : "Add to cart"}
+        </Button>
+        <button
+          onClick={handleLike}
+          className="h-full cursor-pointer p-2 text-xl font-bold uppercase text-gray-400 duration-200 hover:bg-slate-50 hover:text-red-600"
+        >
+          {loading ? "loading..." : isLiked ? "unlike" : "like"}
+        </button>
+      </div>
     </div>
   );
 });
