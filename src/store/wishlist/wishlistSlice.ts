@@ -21,7 +21,11 @@ const initialState: TWishlistState = {
 const wishSlice = createSlice({
   name: "wishlist",
   initialState,
-  reducers: {},
+  reducers: {
+    cleanUp: (state) => {
+      state.productsFullInfo = [];
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(actToggleWishlistItem.pending, (state) => {
@@ -31,7 +35,12 @@ const wishSlice = createSlice({
         const { productId, type } = action.payload;
         console.log(productId, type);
         if (type === "add") state.itemsId.push(productId);
-        else state.itemsId = state.itemsId.filter((item) => item != productId);
+        else {
+          state.itemsId = state.itemsId.filter((item) => item != productId);
+          state.productsFullInfo = state.productsFullInfo.filter(
+            ({ id }) => id != productId,
+          );
+        }
       })
       .addCase(actToggleWishlistItem.rejected, (state, action) => {
         state.error = action.error.message as string;
@@ -53,5 +62,6 @@ const wishSlice = createSlice({
   },
 });
 
+export const { cleanUp } = wishSlice.actions;
 export { actToggleWishlistItem, actGetProductsWhislist };
 export default wishSlice.reducer;

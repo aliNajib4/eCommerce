@@ -2,7 +2,7 @@ import { CartItem, Loading } from "@components/index";
 import actGetCartProducts from "@store/cart/act/actGetCartProducts";
 import {
   allPriceSeletor,
-  quantitySeletor,
+  CartQuantitySeletor,
 } from "@store/cart/selector/selector";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { useCallback, useEffect } from "react";
@@ -14,7 +14,7 @@ const Cart = () => {
     (state) => state.cart,
   );
   const totalPrice = useAppSelector(allPriceSeletor);
-  const totalQuantity = useAppSelector(quantitySeletor);
+  const totalQuantity = useAppSelector(CartQuantitySeletor);
 
   const products = productsFullinfo.map((el) => {
     return {
