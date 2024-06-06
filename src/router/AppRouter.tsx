@@ -1,16 +1,16 @@
+import { lazy, Suspense } from "react";
 import MainLayout from "../App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import {
-  Home,
-  Products,
-  Categories,
-  AboutUs,
-  Login,
-  Register,
-  Error,
-  Cart,
-  Wishlist,
-} from "@pages/.";
+import Error from "@pages/Error"; // Error component can't be lazy-loaded if it's used in errorElement
+
+const Home = lazy(() => import("@pages/Home"));
+const Products = lazy(() => import("@pages/Products"));
+const Categories = lazy(() => import("@pages/Categories"));
+const AboutUs = lazy(() => import("@pages/AboutUs"));
+const Login = lazy(() => import("@pages/Login"));
+const Register = lazy(() => import("@pages/Register"));
+const Cart = lazy(() => import("@pages/Cart"));
+const Wishlist = lazy(() => import("@pages/Wishlist"));
 
 const router = createBrowserRouter([
   {
@@ -21,19 +21,35 @@ const router = createBrowserRouter([
       {
         path: "/",
         index: true,
-        element: <Home />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Home />
+          </Suspense>
+        ),
       },
       {
         path: "/cart",
-        element: <Cart />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Cart />
+          </Suspense>
+        ),
       },
       {
         path: "/wishlist",
-        element: <Wishlist />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Wishlist />
+          </Suspense>
+        ),
       },
       {
         path: "/categories/products/:id",
-        element: <Products />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Products />
+          </Suspense>
+        ),
         loader: ({ params }) => {
           if (typeof params.id !== "string" || !/^[a-z]+$/i.test(params.id))
             throw new Response("Bad Request", {
@@ -45,19 +61,35 @@ const router = createBrowserRouter([
       },
       {
         path: "/categories",
-        element: <Categories />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Categories />
+          </Suspense>
+        ),
       },
       {
         path: "/about-us",
-        element: <AboutUs />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <AboutUs />
+          </Suspense>
+        ),
       },
       {
         path: "/login",
-        element: <Login />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Login />
+          </Suspense>
+        ),
       },
       {
         path: "/register",
-        element: <Register />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Register />
+          </Suspense>
+        ),
       },
     ],
   },
