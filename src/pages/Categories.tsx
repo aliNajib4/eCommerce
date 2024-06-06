@@ -1,20 +1,10 @@
 import { Category, Loading } from "@components/.";
-import { actGetCategories, cleanUp } from "@store/categories/categoriesSlice";
-import { useAppSelector, useAppDispatch } from "@store/hooks";
-import { useEffect } from "react";
+import useCategories from "@hooks/useCategories";
+
 
 const Categories = () => {
-  const dispatch = useAppDispatch();
-  const { records, loading, error } = useAppSelector(
-    (state) => state.categories,
-  );
 
-  useEffect(() => {
-    dispatch(actGetCategories());
-    return () => {
-      dispatch(cleanUp());
-    };
-  }, [dispatch]);
+  const { loading, error, records } = useCategories();
 
   return (
     <div>
