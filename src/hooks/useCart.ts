@@ -46,7 +46,15 @@ const useCart = () => {
       dispatch(cleanUp());
     };
   }, [dispatch]);
-  return {loading, error, products, totalPrice, totalQuantity, handelQuantity, deleteItem};
+  return {
+    loading,
+    error,
+    products,
+    totalPrice,
+    totalQuantity,
+    handelQuantity,
+    deleteItem,
+  };
 };
 
 export default useCart;

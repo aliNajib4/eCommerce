@@ -19,7 +19,7 @@ const useProducts = () => {
       dispatch(cleanUp());
     };
   }, [dispatch, params.id]);
-  return {loading, error, productsFullInfo};
-}
+  return { loading, error, productsFullInfo };
+};
 
 export default useProducts;

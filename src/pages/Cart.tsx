@@ -2,9 +2,16 @@ import { CartItem, Loading } from "@components/index";
 import useCart from "@hooks/useCart";
 
 const Cart = () => {
+  const {
+    loading,
+    error,
+    products,
+    totalPrice,
+    totalQuantity,
+    handelQuantity,
+    deleteItem,
+  } = useCart();
 
-  const  {loading, error, products, totalPrice, totalQuantity, handelQuantity, deleteItem} = useCart();
-  
   return (
     <div>
       <Loading status={loading} error={error}>

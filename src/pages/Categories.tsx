@@ -1,9 +1,7 @@
 import { Category, Loading } from "@components/.";
 import useCategories from "@hooks/useCategories";
 
-
 const Categories = () => {
-
   const { loading, error, records } = useCategories();
 
   return (

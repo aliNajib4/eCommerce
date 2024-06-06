@@ -1,9 +1,7 @@
 import { Loading, Product, GridList } from "@components/.";
 import useProducts from "@hooks/useProducts";
 
-
 const Products = () => {
-  
   const { loading, error, productsFullInfo } = useProducts();
 
   return (

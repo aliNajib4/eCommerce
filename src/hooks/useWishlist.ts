@@ -2,8 +2,8 @@ import { useAppSelector, useAppDispatch } from "@store/hooks";
 import { actGetProductsWhislist, cleanUp } from "@store/wishlist/wishlistSlice";
 import { useEffect } from "react";
 
-const useWishlist = ()=>{
-    const {
+const useWishlist = () => {
+  const {
     loadingProducts: loading,
     error,
     productsFullInfo,
@@ -22,7 +22,7 @@ const useWishlist = ()=>{
       dispatch(cleanUp());
     };
   }, [dispatch]);
-  return { loading, error, products }
-}
+  return { loading, error, products };
+};
 
 export default useWishlist;

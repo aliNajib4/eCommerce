@@ -4,7 +4,7 @@ import { ReactNode, useEffect, useRef, useState } from "react";
 import { RootState } from "@store/store";
 
 type TProps = {
-  quantitySeletor: (state: RootState)=>number;
+  quantitySeletor: (state: RootState) => number;
   url: string;
   Icon: ReactNode;
 };
