@@ -1,24 +1,15 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
 import type { TProduct } from "@types/product";
+import { fetchGetData } from "@util/.";
 
 type TData = TProduct[];
 
 const actGetProducts = createAsyncThunk(
   "products/actGetProducts",
   async (params: string, { rejectWithValue }) => {
-    let data: TData = [];
-    let error = false;
-    let errorMag = "";
-    await axios
-      .get<TData>(`/products?cat_prefix=${params === "all" ? "" : params}`)
-      .then((res) => {
-        data = res.data;
-      })
-      .catch((err) => {
-        error = true;
-        errorMag = err.message;
-      });
+    const { error, errorMag, data } = await fetchGetData<TData>(
+      `/products?cat_prefix=${params === "all" ? "" : params}`,
+    );
     return error ? rejectWithValue(errorMag) : data;
   },
 );

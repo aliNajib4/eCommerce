@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "@store/store";
 import { TProduct } from "@types/product";
-import axios from "axios";
+import { fetchGetData } from "@util/.";
 
 type TData = TProduct[];
 
@@ -12,24 +12,11 @@ const actGetCartProducts = createAsyncThunk(
     // get not found products in this way
     // const ids = cart.items.map((el) => "id=" + el.id).join("&");
     // const url = `/products/${ids}`
-    let data: TData = [];
-    let error = false;
-    let errorMag = "";
-    await axios
-      .get<TData>("/products")
-      .then((res) => {
-        return res.data;
-      })
-      .then((allProducts) => {
-        data = allProducts.filter((el) =>
-          cart.items.some((item) => item.id === el.id),
-        );
-      })
-      .catch((err) => {
-        error = true;
-        errorMag = err.message;
-      });
-    return error ? rejectWithValue(errorMag) : data;
+    const { error, errorMag, data } = await fetchGetData<TData>("/products");
+    const allProducts = data.filter((el) =>
+      cart.items.some((item) => item.id === el.id),
+    );
+    return error ? rejectWithValue(errorMag) : allProducts;
   },
 );
 
