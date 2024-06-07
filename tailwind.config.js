@@ -8,7 +8,7 @@ export default {
     },
     extend: {
       gridTemplateColumns: {
-        "auto-fit-250": "repeat(auto-fit, minmax(300px, 1fr))",
+        "auto-fit-250": "repeat(4, minmax(300px, 1fr))",
       },
       animation: {
         pumping: "pumping 300ms ease-out ",
