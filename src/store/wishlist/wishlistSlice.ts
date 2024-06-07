@@ -1,14 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import actToggleWishlistItem from "./act/actToggleWishlistItem";
 import actGetProductsWhislist from "./act/actGetProductsWhislist";
-import { TProduct } from "@types/product";
-import { TloadingProducts } from "@types/loadingProducts";
+import { type TProduct, type TLoading } from "@types/.";
 
 type TWishlistState = {
   itemsId: string[];
   productsFullInfo: TProduct[];
   error: null | string;
-  loadingProducts: TloadingProducts;
+  loadingProducts: TLoading;
 };
 
 const initialState: TWishlistState = {

@@ -1,4 +1,4 @@
-import { TLoading } from "@types/loadingCategories";
+import { type TLoading } from "@types/.";
 
 type TLoadingProps = {
   error: string | null;

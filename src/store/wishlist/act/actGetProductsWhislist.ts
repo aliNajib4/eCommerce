@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "@store/store";
-import { TProduct } from "@types/product";
+import { type TProduct } from "@types/.";
 import { fetchGetData } from "@util/.";
 
 type TData = TProduct[];

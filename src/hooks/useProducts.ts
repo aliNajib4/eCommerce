@@ -1,6 +1,6 @@
 import { useAppSelector, useAppDispatch } from "@store/hooks";
 import { actGetProducts, cleanUp } from "@store/products/productsSlice";
-import { TProduct } from "@types/product";
+import { type TProduct } from "@types/.";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 

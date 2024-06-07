@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import type { TCategory } from "@types/category";
+import { type TCategory } from "@types/.";
 import { fetchGetData } from "@util/.";
 
 type TData = TCategory[];

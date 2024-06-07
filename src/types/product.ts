@@ -1,4 +1,4 @@
-export type TProduct = {
+type TProduct = {
   id: string;
   title: string;
   price: string;
@@ -7,3 +7,5 @@ export type TProduct = {
   max: number;
   quantity?: number;
 };
+
+export default TProduct;

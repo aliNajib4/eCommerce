@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { TLoading } from "@types/loadingCategories";
-import { TProduct } from "@types/product";
+import { type TLoading, type TProduct } from "@types/.";
 import actGetCartProducts from "./act/actGetCartProducts";
 
 interface ICartState {

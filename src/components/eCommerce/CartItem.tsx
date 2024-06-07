@@ -6,7 +6,7 @@ import {
   Select,
   SelectChangeEvent,
 } from "@mui/material";
-import { TProduct } from "@types/product";
+import { type TProduct } from "@types/.";
 import { memo } from "react";
 
 type TcartItem = TProduct & {

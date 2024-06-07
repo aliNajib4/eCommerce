@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import { addToCart } from "@store/cart/cartSlice";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { actToggleWishlistItem } from "@store/wishlist/wishlistSlice";
-import { TProduct } from "@types/product";
+import { type TProduct } from "@types/.";
 import { useState, memo } from "react";
 
 const Product = memo(({ id, img, title, price, quantity, max }: TProduct) => {
