@@ -6,8 +6,11 @@ type TData = TCategory[];
 
 const actGetCategories = createAsyncThunk(
   "categories/actGetCategories",
-  async (_, { rejectWithValue }) => {
-    const { error, errorMag, data } = await fetchGetData<TData>("/categories");
+  async (_, { rejectWithValue, signal }) => {
+    const { error, errorMag, data } = await fetchGetData<TData>(
+      "/categories",
+      signal,
+    );
     return error ? rejectWithValue(errorMag) : data;
   },
 );

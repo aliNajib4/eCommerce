@@ -14,8 +14,9 @@ const useProducts = () => {
   }));
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(actGetProducts(params.id ? params.id : "all"));
+    const promise = dispatch(actGetProducts(params.id ? params.id : "all"));
     return () => {
+      promise.abort();
       dispatch(cleanUp());
     };
   }, [dispatch, params.id]);

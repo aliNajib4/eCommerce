@@ -7,12 +7,14 @@ type TData = TProduct[];
 
 const actGetProductsWhislist = createAsyncThunk(
   "wishlist/actGetProductsWhislist",
-  async (_, { rejectWithValue, getState }) => {
+  async (_, { rejectWithValue, getState, signal }) => {
     const {
       wishlist: { itemsId },
     } = getState() as RootState;
-    const { data, error, errorMag } =
-      await fetchGetData<TData>(`/products?userId=1`);
+    const { data, error, errorMag } = await fetchGetData<TData>(
+      `/products?userId=1`,
+      signal,
+    );
 
     const allProducts = data.filter((el) => itemsId.includes(el.id));
 

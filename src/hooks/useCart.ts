@@ -41,8 +41,9 @@ const useCart = () => {
   );
 
   useEffect(() => {
-    dispatch(actGetCartProducts());
+    const promise = dispatch(actGetCartProducts());
     return () => {
+      promise.abort();
       dispatch(cleanUp());
     };
   }, [dispatch]);

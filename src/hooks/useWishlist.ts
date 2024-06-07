@@ -17,8 +17,9 @@ const useWishlist = () => {
   });
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(actGetProductsWhislist());
+    const promise = dispatch(actGetProductsWhislist());
     return () => {
+      promise.abort();
       dispatch(cleanUp());
     };
   }, [dispatch]);
