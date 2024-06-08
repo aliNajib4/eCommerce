@@ -14,7 +14,7 @@ const Cart = () => {
 
   return (
     <div>
-      <Loading status={loading} error={error}>
+      <Loading status={loading} error={error} type="product">
         {products.map((el) => (
           <CartItem
             key={el.id}

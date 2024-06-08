@@ -1,4 +1,4 @@
-import { Category, Loading } from "@components/.";
+import { Category, GridList, Loading } from "@components/.";
 import useCategories from "@hooks/useCategories";
 
 const Categories = () => {
@@ -6,12 +6,11 @@ const Categories = () => {
 
   return (
     <div>
-      <Loading status={loading} error={error}>
-        <div className="grid grid-cols-1 gap-5 px-10 sm:grid-cols-3">
-          {records.map((category) => (
-            <Category key={category.id} {...category} />
-          ))}
-        </div>
+      <Loading status={loading} error={error} type="category">
+        <GridList
+          records={records}
+          recordItem={(record) => <Category {...record} />}
+        />
       </Loading>
     </div>
   );

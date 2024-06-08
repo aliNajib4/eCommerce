@@ -1,5 +1,5 @@
 type TCategory = {
-  id?: string;
+  id: string;
   title: string;
   prefix: string;
   img: string;

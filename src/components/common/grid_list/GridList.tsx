@@ -2,7 +2,7 @@ import { Fragment, ReactNode } from "react";
 
 type TGridListProps<T> = {
   records: T[];
-  recordItem: (recordItem: T) => ReactNode;
+  recordItem: (recordItem?: T) => ReactNode;
 };
 
 const GridList = <T extends { id: string }>({

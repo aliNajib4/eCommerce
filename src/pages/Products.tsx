@@ -6,7 +6,7 @@ const Products = () => {
 
   return (
     <div>
-      <Loading status={loading} error={error}>
+      <Loading status={loading} error={error} type="product">
         <GridList
           records={productsFullInfo}
           recordItem={(record) => <Product {...record} />}

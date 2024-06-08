@@ -6,7 +6,7 @@ const Wishlist = () => {
 
   return (
     <div>
-      <Loading status={loading} error={error}>
+      <Loading status={loading} error={error} type="wishlist">
         <GridList
           records={products}
           recordItem={(record) => <Product {...record} />}
