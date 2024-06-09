@@ -5,14 +5,14 @@ const Products = () => {
   const { loading, error, productsFullInfo } = useProducts();
 
   return (
-    <div>
+    <>
       <Loading status={loading} error={error} type="product">
         <GridList
           records={productsFullInfo}
           recordItem={(record) => <Product {...record} />}
         />
       </Loading>
-    </div>
+    </>
   );
 };
 

@@ -3,6 +3,7 @@ import { GridList } from "@components/.";
 import skeletonProduct from "../skeleton/skeletonProduct";
 import skeletonCategory from "../skeleton/skeletonCategory";
 import skeletonWishlist from "../skeleton/skeletonWishlist";
+import LottieHandler from "../LottieHandler";
 
 const skeleton = {
   product: skeletonProduct,
@@ -26,13 +27,13 @@ const Loading = ({
   const Component = skeleton[type];
   if (status === "pending") {
     return (
-      <GridList recordItem={() => <Component />} records={Array(4).fill(0)} />
+      <GridList recordItem={() => <Component />} records={Array(3).fill(0)} />
     );
   }
   if (status === "failed") {
-    return error;
+    return <LottieHandler type="error" message={error} />;
   }
-  return <div>{children}</div>;
+  return <>{children}</>;
 };
 
 export default Loading;
