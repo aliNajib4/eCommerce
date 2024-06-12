@@ -5,7 +5,7 @@ const Category = ({ img, prefix, title }: TCategory) => {
   return (
     <div className="m-auto">
       <Link to={`/categories/products/${prefix}`}>
-        <div className="max-w-80 overflow-hidden rounded-full text-center bg-gray-100 w-[275px] h-[275px]">
+        <div className="h-[275px] w-[275px] max-w-80 overflow-hidden rounded-full bg-gray-100 text-center">
           <img src={img} alt={title} />
         </div>
         <h4 className="mt-5 text-center text-xl font-bold uppercase">

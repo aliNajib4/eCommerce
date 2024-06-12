@@ -1,6 +1,5 @@
 import TextField from "@mui/material/TextField";
 import {
-  MdOutlineAccountCircle as Account,
   MdOutlineShoppingBag as ShoppingBag,
   MdOutlineBookmark as Wishlist,
 } from "react-icons/md";
@@ -8,6 +7,7 @@ import { Link } from "react-router-dom";
 import { CartQuantitySeletor } from "@store/cart/selector/selector";
 import { wishlistQuantitySeletor } from "@store/wishlist/selector/selector";
 import HaederCounter from "@components/eCommerce/HaederCounter";
+import { Button } from "@mui/material";
 
 const MainHeader = () => {
   return (
@@ -17,9 +17,6 @@ const MainHeader = () => {
       </Link>
       <TextField id="outlined" label="search" />
       <div className="flex items-center gap-5">
-        <div>
-          <Account size={32} />
-        </div>
         <HaederCounter
           quantitySeletor={wishlistQuantitySeletor}
           url="/wishlist"
@@ -30,6 +27,12 @@ const MainHeader = () => {
           url="/cart"
           Icon={<ShoppingBag size={32} />}
         />
+        <Link to="/signup">
+          <Button variant="outlined"> sign up </Button>
+        </Link>
+        <Link to="/signin">
+          <Button variant="contained">sign in</Button>
+        </Link>
       </div>
     </div>
   );

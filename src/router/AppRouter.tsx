@@ -9,8 +9,8 @@ const Home = lazy(() => import("@pages/Home"));
 const Products = lazy(() => import("@pages/Products"));
 const Categories = lazy(() => import("@pages/Categories"));
 const AboutUs = lazy(() => import("@pages/AboutUs"));
-const Login = lazy(() => import("@pages/Login"));
-const Register = lazy(() => import("@pages/Register"));
+const SignUp = lazy(() => import("@pages/SignUp"));
+const SignIn = lazy(() => import("@pages/SignIn"));
 const Cart = lazy(() => import("@pages/Cart"));
 const Wishlist = lazy(() => import("@pages/Wishlist"));
 
@@ -86,18 +86,18 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/login",
+        path: "/signIn",
         element: (
           <SuspensePage>
-            <Login />
+            <SignIn />
           </SuspensePage>
         ),
       },
       {
-        path: "/register",
+        path: "/SignUp",
         element: (
           <SuspensePage>
-            <Register />
+            <SignUp />
           </SuspensePage>
         ),
       },

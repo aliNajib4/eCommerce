@@ -6,3 +6,4 @@ export { default as Loading } from "./feedback/loading/Loading";
 export { default as GridList } from "./common/grid_list/GridList";
 export { default as CartItem } from "./eCommerce/CartItem";
 export { default as SuspensePage } from "./feedback/SuspensePage";
+export { default as Input } from "./forms/Input";

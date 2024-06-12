@@ -39,8 +39,8 @@ const Product = memo(({ id, img, title, price, quantity, max }: TProduct) => {
   };
 
   return (
-    <div className="w-full h-full">
-      <div className="m-auto overflow-hidden text-center rounded-full max-h-32 max-w-32 w-[128px] h-[128px] bg-gray-100">
+    <div className="h-full w-full">
+      <div className="m-auto h-[128px] max-h-32 w-[128px] max-w-32 overflow-hidden rounded-full bg-gray-100 text-center">
         <img src={img} alt={title} />
       </div>
       <div className="m-8">
@@ -76,7 +76,7 @@ const Product = memo(({ id, img, title, price, quantity, max }: TProduct) => {
         </Button>
         <button
           onClick={handleLike}
-          className="h-full p-2 text-xl font-bold text-gray-400 uppercase duration-200 cursor-pointer hover:bg-slate-50 hover:text-red-600"
+          className="h-full cursor-pointer p-2 text-xl font-bold uppercase text-gray-400 duration-200 hover:bg-slate-50 hover:text-red-600"
         >
           {loading ? "loading..." : isLiked ? "unlike" : "like"}
         </button>
