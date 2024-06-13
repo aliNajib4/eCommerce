@@ -11,14 +11,11 @@ const actGetProductsWhislist = createAsyncThunk(
     const {
       wishlist: { itemsId },
     } = getState() as RootState;
-    const { data, error, errorMag } = await fetchGetData<TData>(
-      `/products?userId=1`,
-      signal,
-    );
+    const ids = itemsId.map((id) => "id=" + id).join("&");
+    const url = `/products?${ids}`;
+    const { data, error, errorMag } = await fetchGetData<TData>(url, signal);
 
-    const allProducts = data.filter((el) => itemsId.includes(el.id));
-
-    return error ? rejectWithValue(errorMag) : allProducts;
+    return error ? rejectWithValue(errorMag) : data;
   },
 );
 
