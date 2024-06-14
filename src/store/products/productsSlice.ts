@@ -35,7 +35,7 @@ const productsSlice = createSlice({
       })
       .addCase(actGetProducts.rejected, (state, action) => {
         state.loading = "failed";
-        state.error = action.error.message as string;
+        state.error = action.payload as string;
       });
   },
 });

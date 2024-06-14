@@ -65,7 +65,7 @@ const cartSlice = createSlice({
       })
       .addCase(actGetCartProducts.rejected, (state, action) => {
         state.loading = "failed";
-        state.error = action.error.message as string;
+        state.error = action.payload as string;
       });
   },
 });

@@ -8,8 +8,8 @@ type TInputsProps<TFieldValue extends FieldValues> = {
   register: UseFormRegister<TFieldValue>;
   error: string;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
-  formText: string;
-  success: string;
+  formText?: string;
+  success?: string;
 };
 
 const Input = <TFieldValue extends FieldValues>({

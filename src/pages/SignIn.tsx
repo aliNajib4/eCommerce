@@ -2,10 +2,15 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
+import Alert from "@mui/material/Alert";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signInSchema, TInputs } from "@validation/signin";
 import { Input } from "@components/index";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { actSignIn, cleanUp } from "@store/auth/authSlice";
+import { useEffect } from "react";
 
 const SignIn = () => {
   const {
@@ -17,9 +22,24 @@ const SignIn = () => {
     mode: "onBlur",
   });
 
+  const dispatch = useAppDispatch();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const { loading, error } = useAppSelector((state) => state.auth);
+
   const submitForm: SubmitHandler<TInputs> = (data) => {
-    console.log(data);
+    if (searchParams.get("massage")) setSearchParams("");
+    dispatch(actSignIn(data))
+      .unwrap()
+      .then(() => navigate("/"));
   };
+
+  useEffect(
+    () => () => {
+      dispatch(cleanUp());
+    },
+    [dispatch],
+  );
 
   return (
     <Container
@@ -32,6 +52,15 @@ const SignIn = () => {
         alignItems: "center",
       }}
     >
+      {searchParams.get("massage") === "Account_created_successfully" && (
+        <Alert
+          severity="success"
+          variant="outlined"
+          sx={{ mb: 5, fontSize: 16 }}
+        >
+          account created successfully, please sign in
+        </Alert>
+      )}
       <Box component="form" onSubmit={handleSubmit(submitForm)}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
@@ -57,9 +86,11 @@ const SignIn = () => {
           fullWidth
           variant="contained"
           sx={{ mt: 3, mb: 2 }}
+          disabled={loading === "pending"}
         >
-          sign up
+          sign in
         </Button>
+        {error && <Alert severity="error">{error}</Alert>}
       </Box>
     </Container>
   );

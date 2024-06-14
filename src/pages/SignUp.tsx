@@ -7,8 +7,16 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { signUpSchema, TInputs } from "@validation/signup";
 import { Input } from "@components/index";
 import useCheckEmail from "@hooks/useCheckEmail";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { actSignUp } from "@store/auth/authSlice";
+import { useNavigate } from "react-router-dom";
+import { Alert } from "@mui/material";
 
 const SignUp = () => {
+  const dispatch = useAppDispatch();
+  const Navigate = useNavigate();
+  const { loading, error } = useAppSelector((state) => state.auth);
+
   const {
     register,
     handleSubmit,
@@ -24,7 +32,10 @@ const SignUp = () => {
     useCheckEmail();
 
   const submitForm: SubmitHandler<TInputs> = (data) => {
-    console.log(data);
+    delete data.confim_password;
+    dispatch(actSignUp(data))
+      .unwrap()
+      .then(() => Navigate("/signin?massage=Account_created_successfully"));
   };
   const onBlurEmail = async (e: React.FocusEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -116,10 +127,11 @@ const SignUp = () => {
           fullWidth
           variant="contained"
           sx={{ mt: 3, mb: 2 }}
-          disabled={emailStatus === "checking"}
+          disabled={emailStatus === "checking" || loading === "pending"}
         >
           sign up
         </Button>
+        {error && <Alert severity="error">{error}</Alert>}
       </Box>
     </Container>
   );

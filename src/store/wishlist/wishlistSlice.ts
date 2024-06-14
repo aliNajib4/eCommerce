@@ -45,7 +45,7 @@ const wishSlice = createSlice({
         }
       })
       .addCase(actToggleWishlistItem.rejected, (state, action) => {
-        state.error = action.error.message as string;
+        state.error = action.payload as string;
       });
 
     builder
@@ -58,7 +58,7 @@ const wishSlice = createSlice({
         state.productsFullInfo = action.payload;
       })
       .addCase(actGetProductsWhislist.rejected, (state, action) => {
-        state.error = action.error.message as string;
+        state.error = action.payload as string;
         state.loadingProducts = "failed";
       });
   },

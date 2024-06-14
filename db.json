@@ -1,4 +1,13 @@
 {
+  "users": [
+    {
+      "email": "alinajibhegazy4@gmail.com",
+      "password": "$2a$10$9Jlm7mIB.Iv4I6DZ8uyaAeSue/Y9gfP1E7D5vlFykxW3rgGJ04Sem",
+      "firstName": "ali",
+      "lastName": "najib",
+      "id": 1
+    }
+  ],
   "categories": [
     {
       "id": "1",

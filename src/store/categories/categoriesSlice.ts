@@ -34,7 +34,7 @@ const categoriesSlice = createSlice({
       })
       .addCase(actGetCategories.rejected, (state, action) => {
         state.loading = "failed";
-        state.error = action.error.message as string;
+        state.error = action.payload as string;
       });
   },
 });
