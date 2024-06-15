@@ -35,7 +35,6 @@ const wishSlice = createSlice({
       })
       .addCase(actToggleWishlistItem.fulfilled, (state, action) => {
         const { productId, type } = action.payload;
-        console.log(productId, type);
         if (type === "add") state.itemsId.push(productId);
         else {
           state.itemsId = state.itemsId.filter((item) => item != productId);

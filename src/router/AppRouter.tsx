@@ -2,7 +2,7 @@ import { lazy, Suspense } from "react";
 const MainLayout = lazy(() => import("../App"));
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Error from "@pages/Error"; // Error component can't be lazy-loaded if it's used in errorElement
-import { SuspensePage } from "@components/.";
+import { SuspensePage, ProtecteRoute } from "@components/.";
 import LottieHandler from "@components/feedback/LottieHandler";
 
 const Home = lazy(() => import("@pages/Home"));
@@ -51,7 +51,9 @@ const router = createBrowserRouter([
         path: "/wishlist",
         element: (
           <SuspensePage>
-            <Wishlist />
+            <ProtecteRoute>
+              <Wishlist />
+            </ProtecteRoute>
           </SuspensePage>
         ),
       },
@@ -91,7 +93,9 @@ const router = createBrowserRouter([
         path: "/signIn",
         element: (
           <SuspensePage>
-            <SignIn />
+            <ProtecteRoute inSignin={true}>
+              <SignIn />
+            </ProtecteRoute>
           </SuspensePage>
         ),
       },
@@ -99,7 +103,9 @@ const router = createBrowserRouter([
         path: "/SignUp",
         element: (
           <SuspensePage>
-            <SignUp />
+            <ProtecteRoute inSignin={true}>
+              <SignUp />
+            </ProtecteRoute>
           </SuspensePage>
         ),
       },
@@ -107,7 +113,9 @@ const router = createBrowserRouter([
         path: "/Profile",
         element: (
           <SuspensePage>
-            <Profile />
+            <ProtecteRoute>
+              <Profile />
+            </ProtecteRoute>
           </SuspensePage>
         ),
       },
@@ -115,7 +123,9 @@ const router = createBrowserRouter([
         path: "/Orders",
         element: (
           <SuspensePage>
-            <Orders />
+            <ProtecteRoute>
+              <Orders />
+            </ProtecteRoute>
           </SuspensePage>
         ),
       },

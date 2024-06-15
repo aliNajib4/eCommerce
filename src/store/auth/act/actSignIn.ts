@@ -21,10 +21,8 @@ const actSignIn = createAsyncThunk(
       .post<TResponse>("/signin", inputs)
       .then((res) => {
         data = res.data;
-        console.log(data);
       })
       .catch((err) => {
-        console.log(err);
         error = true;
         errorMag = err.response?.data;
       });

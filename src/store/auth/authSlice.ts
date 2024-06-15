@@ -57,7 +57,6 @@ const authSlice = createSlice({
         state.loading = "succeeded";
         state.accessToken = action.payload.accessToken;
         state.user = action.payload.user;
-        console.log(action.payload);
       })
       .addCase(actSignIn.rejected, (state, action) => {
         state.loading = "failed";

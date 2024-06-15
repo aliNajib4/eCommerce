@@ -13,8 +13,6 @@ const actSignUp = createAsyncThunk(
         data = res.data;
       })
       .catch((err) => {
-        console.log("fire");
-        // console.log( "asdasdasdasd",err);
         error = true;
         errorMag = err.respones?.data;
       });

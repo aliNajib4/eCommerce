@@ -28,10 +28,13 @@ const SignIn = () => {
   const { loading, error } = useAppSelector((state) => state.auth);
 
   const submitForm: SubmitHandler<TInputs> = (data) => {
-    if (searchParams.get("massage")) setSearchParams("");
     dispatch(actSignIn(data))
       .unwrap()
       .then(() => navigate("/"));
+  };
+
+  const handleCllickSubmit = () => {
+    if (searchParams.get("massage")) setSearchParams("");
   };
 
   useEffect(
@@ -52,13 +55,16 @@ const SignIn = () => {
         alignItems: "center",
       }}
     >
-      {searchParams.get("massage") === "Account_created_successfully" && (
+      {searchParams.get("massage") && (
         <Alert
           severity="success"
           variant="outlined"
           sx={{ mb: 5, fontSize: 16 }}
         >
-          account created successfully, please sign in
+          {searchParams.get("massage") === "Account_created_successfully"
+            ? "account created successfully, please sign in"
+            : searchParams.get("massage") === "Please_signin" &&
+              "you need to sign in, please sign in"}
         </Alert>
       )}
       <Box component="form" onSubmit={handleSubmit(submitForm)}>
@@ -87,6 +93,7 @@ const SignIn = () => {
           variant="contained"
           sx={{ mt: 3, mb: 2 }}
           disabled={loading === "pending"}
+          onClick={handleCllickSubmit}
         >
           sign in
         </Button>
