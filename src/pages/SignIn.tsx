@@ -3,46 +3,20 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Alert from "@mui/material/Alert";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { signInSchema, TInputs } from "@validation/signin";
 import { Input } from "@components/index";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { actSignIn, cleanUp } from "@store/auth/authSlice";
-import { useEffect } from "react";
+import useSignin from "@hooks/useSignin";
 
 const SignIn = () => {
   const {
-    register,
+    searchParams,
     handleSubmit,
-    formState: { errors },
-  } = useForm<TInputs>({
-    resolver: zodResolver(signInSchema),
-    mode: "onBlur",
-  });
-
-  const dispatch = useAppDispatch();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const navigate = useNavigate();
-  const { loading, error } = useAppSelector((state) => state.auth);
-
-  const submitForm: SubmitHandler<TInputs> = (data) => {
-    dispatch(actSignIn(data))
-      .unwrap()
-      .then(() => navigate("/"));
-  };
-
-  const handleCllickSubmit = () => {
-    if (searchParams.get("massage")) setSearchParams("");
-  };
-
-  useEffect(
-    () => () => {
-      dispatch(cleanUp());
-    },
-    [dispatch],
-  );
+    submitForm,
+    errors,
+    register,
+    loading,
+    handleCllickSubmit,
+    error,
+  } = useSignin();
 
   return (
     <Container
