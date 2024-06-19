@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const fetchGetData = async <TData>(url: string, signal: AbortSignal) => {
+const fetchGetData = async <TData>(url: string, signal?: AbortSignal) => {
   let data: TData;
   let error = false;
   let errorMag = "";

@@ -18,8 +18,9 @@ import {
   Typography,
 } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { logout } from "@store/auth/authSlice";
+import actGetWishlist from "@store/wishlist/act/actGetWishlist";
 
 const settings = ["Profile", "Orders", "Logout"];
 
@@ -49,6 +50,10 @@ const MainHeader = () => {
       navigate("/orders");
     }
   };
+
+  useEffect(() => {
+    if (accessToken) dispatch(actGetWishlist());
+  }, [dispatch, accessToken]);
 
   return (
     <div className="flex items-center justify-between">

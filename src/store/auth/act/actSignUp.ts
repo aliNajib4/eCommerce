@@ -16,6 +16,10 @@ const actSignUp = createAsyncThunk(
         error = true;
         errorMag = err.respones?.data;
       });
+    await axios.post("/wishlist", {
+      useId: "0",
+      productsId: [],
+    });
     return error ? rejectWithValue(errorMag) : data;
   },
 );

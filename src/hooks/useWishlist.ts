@@ -1,5 +1,5 @@
 import { useAppSelector, useAppDispatch } from "@store/hooks";
-import { actGetProductsWhislist, cleanUp } from "@store/wishlist/wishlistSlice";
+import { actGetProductsWishlist, cleanUp } from "@store/wishlist/wishlistSlice";
 import { useEffect } from "react";
 
 const useWishlist = () => {
@@ -17,7 +17,7 @@ const useWishlist = () => {
   });
   const dispatch = useAppDispatch();
   useEffect(() => {
-    const promise = dispatch(actGetProductsWhislist());
+    const promise = dispatch(actGetProductsWishlist());
     return () => {
       promise.abort();
       dispatch(cleanUp());

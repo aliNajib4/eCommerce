@@ -5,12 +5,13 @@ import { fetchGetData } from "@util/.";
 
 type TData = TProduct[];
 
-const actGetProductsWhislist = createAsyncThunk(
-  "wishlist/actGetProductsWhislist",
+const actGetProductsWishlist = createAsyncThunk(
+  "wishlist/actGetProductsWishlist",
   async (_, { rejectWithValue, getState, signal }) => {
     const {
       wishlist: { itemsId },
     } = getState() as RootState;
+    if (itemsId.length === 0) return [];
     const ids = itemsId.map((id) => "id=" + id).join("&");
     const url = `/products?${ids}`;
     const { data, error, errorMag } = await fetchGetData<TData>(url, signal);
@@ -19,4 +20,4 @@ const actGetProductsWhislist = createAsyncThunk(
   },
 );
 
-export default actGetProductsWhislist;
+export default actGetProductsWishlist;
