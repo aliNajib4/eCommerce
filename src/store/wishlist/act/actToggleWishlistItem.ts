@@ -23,7 +23,7 @@ const actToggleWishlistItem = createAsyncThunk(
       .then(async (dataResponse) => {
         if (dataResponse.length == 0) {
           await axios
-            .post<TData>(`/wishlist?useId=1`, { useId: "1", productId })
+            .post<TData>(`/wishlist?userId=${userId}`, { userId, productId })
             .catch((err) => {
               error = true;
               errorMag = err.message;
