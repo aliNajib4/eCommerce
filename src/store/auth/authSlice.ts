@@ -7,7 +7,7 @@ type TInitialState = {
   loading: TLoading;
   error: string | null;
   user: {
-    id: number;
+    id: string;
     email: string;
     firstName: string;
     lastName: string;

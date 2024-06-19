@@ -4,6 +4,7 @@ import productsReducer from "./products/productsSlice";
 import cartReducer from "./cart/cartSlice";
 import wishlistReducer from "./wishlist/wishlistSlice";
 import authReducer from "./auth/authSlice";
+import ordersReducer from "./orders/ordersSlice";
 import {
   persistStore,
   persistReducer,
@@ -34,6 +35,7 @@ const rootReducer = combineReducers({
   products: productsReducer,
   cart: persistReducer(cartPersistConfig, cartReducer),
   wishlist: wishlistReducer,
+  orders: ordersReducer,
 });
 
 const store = configureStore({
