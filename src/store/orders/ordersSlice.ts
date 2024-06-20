@@ -18,7 +18,15 @@ const initialState: TOrdersState = {
 const ordersSlice = createSlice({
   name: "orders",
   initialState,
-  reducers: {},
+  reducers: {
+    clean: (state) => {
+      state.error = null;
+      state.loading = "idle";
+    },
+    cleanError: (state) => {
+      state.error = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(actPlaceOrder.pending, (state) => {
@@ -32,8 +40,9 @@ const ordersSlice = createSlice({
         state.loading = "failed";
         state.error = action.payload as string;
       });
-  }
+  },
 });
 
 export { actPlaceOrder };
+export const { clean, cleanError } = ordersSlice.actions;
 export default ordersSlice.reducer;

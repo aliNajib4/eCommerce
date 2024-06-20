@@ -5,6 +5,6 @@ type TOrder = {
   userId: string;
   subtotal: number;
   items: TProduct[];
-}
+};
 
 export default TOrder;

@@ -3,21 +3,34 @@ import {
   CartQuantitySeletor,
 } from "@store/cart/selector/selector";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   changeQuantity,
   removeFromCart,
-  cleanUp,
+  cleanUp as cleanUpCart,
   actGetCartProducts,
+  clearCartAfterPlaceOrder,
 } from "@store/cart/cartSlice";
+import {
+  actPlaceOrder,
+  clean as cleanOrders,
+  cleanError as cleanErrorOrders,
+} from "@store/orders/ordersSlice";
+import { useNavigate } from "react-router-dom";
 
 const useCart = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const { productsFullinfo, items, loading, error } = useAppSelector(
     (state) => state.cart,
   );
   const totalPrice = useAppSelector(allPriceSeletor);
   const totalQuantity = useAppSelector(CartQuantitySeletor);
+  const { loading: loadingPlaceOrder, error: errorPlaceOrder } = useAppSelector(
+    (state) => state.orders,
+  );
+  const accessToken = useAppSelector((state) => state.auth.accessToken);
+  const [openDialog, setOpenDialog] = useState(false);
 
   const products = productsFullinfo.map((el) => {
     return {
@@ -40,11 +53,31 @@ const useCart = () => {
     [dispatch],
   );
 
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+    dispatch(cleanErrorOrders());
+  };
+  const handleClickCheckout = () => {
+    if (!accessToken) navigate("/signin?massage=Please_signin");
+    setOpenDialog(true);
+  };
+  const handleAcceptDialog = () => {
+    dispatch(actPlaceOrder(totalPrice))
+      .unwrap()
+      .then(() => {
+        if (!errorPlaceOrder) {
+          dispatch(clearCartAfterPlaceOrder());
+          handleCloseDialog();
+        }
+      });
+  };
+
   useEffect(() => {
     const promise = dispatch(actGetCartProducts());
     return () => {
       promise.abort();
-      dispatch(cleanUp());
+      dispatch(cleanUpCart());
+      dispatch(cleanOrders());
     };
   }, [dispatch]);
   return {
@@ -55,6 +88,12 @@ const useCart = () => {
     totalQuantity,
     handelQuantity,
     deleteItem,
+    handleClickCheckout,
+    handleCloseDialog,
+    handleAcceptDialog,
+    openDialog,
+    loadingPlaceOrder,
+    errorPlaceOrder,
   };
 };
 
