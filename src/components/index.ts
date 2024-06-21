@@ -8,3 +8,4 @@ export { default as CartItem } from "./eCommerce/CartItem";
 export { default as SuspensePage } from "./feedback/SuspensePage";
 export { default as Input } from "./forms/Input";
 export { default as ProtecteRoute } from "./auth/ProtecteRoute";
+export { default as TopHeader } from "./common/header/TopHeader";

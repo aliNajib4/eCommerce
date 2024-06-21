@@ -6,6 +6,13 @@
       "firstName": "ali",
       "lastName": "najib",
       "id": "1"
+    },
+    {
+      "email": "email@gmail.com",
+      "password": "$2a$10$wP8Q1tf/sSirso5HCE6uyupWEyAd2SMBhbrpLyMrqHoOC2M8bVBea",
+      "firstName": "ali",
+      "lastName": "hegazy",
+      "id": "BYyCh55"
     }
   ],
   "wishlist": [
@@ -28,9 +35,46 @@
       "userId": "1",
       "productId": "1",
       "id": "e8k8ALr"
+    },
+    {
+      "userId": "1",
+      "productId": "9",
+      "id": "CZXXQey"
+    },
+    {
+      "userId": "1",
+      "productId": "6",
+      "id": "3pwu8VS"
+    },
+    {
+      "useId": "0",
+      "productsId": [],
+      "id": "q0hsth_"
     }
   ],
-  "orders": [],
+  "orders": [
+    {
+      "userId": "1",
+      "subtotal": 1600,
+      "items": [
+        {
+          "title": "Velour top",
+          "price": "300.00",
+          "img": "https://eg.hm.com/assets/styles/HNM/14478215/543d925539f4a3b92a79df2dfe46d5d481e1c7ae/2/image-thumb__3463278__product_listing/c1417d02c7a93e6d2aca7965003b4f7d490f0ae8.jpg",
+          "quantity": 2,
+          "id": "6"
+        },
+        {
+          "title": "Pile all-in-one suit with ears",
+          "price": "500.00",
+          "img": "https://eg.hm.com/assets/styles/HNM/10803913/c334b471ad8f564ed1b5dd410c95d94544ee0904/2/image-thumb__1594613__product_listing/5941e37dccc9b0172ac2ab7c266c1cd794cb547f.jpg",
+          "quantity": 2,
+          "id": "9"
+        }
+      ],
+      "id": 1
+    }
+  ],
   "categories": [
     {
       "id": "1",
