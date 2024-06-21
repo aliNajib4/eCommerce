@@ -22,7 +22,11 @@ import { useEffect, useState } from "react";
 import { logout } from "@store/auth/authSlice";
 import actGetWishlist from "@store/wishlist/act/actGetWishlist";
 
-const settings = ["Profile", "Orders", "Logout"];
+const settings = [
+  { name: "Account", path: "/profile" },
+  { name: "Orders", path: "/profile/orders" },
+  { name: "Logout", path: "/" },
+];
 
 const MainHeader = () => {
   const dispatch = useAppDispatch();
@@ -41,14 +45,7 @@ const MainHeader = () => {
 
   const handleCkickItem = (value: string) => {
     handleCloseUserMenu();
-    if (value === "Logout") {
-      dispatch(logout());
-      navigate("/");
-    } else if (value === "Profile") {
-      navigate("/profile");
-    } else {
-      navigate("/orders");
-    }
+    if (value === "Logout") dispatch(logout());
   };
 
   useEffect(() => {
@@ -123,13 +120,14 @@ const MainHeader = () => {
                 onClose={handleCloseUserMenu}
               >
                 {settings.map((setting) => (
-                  <MenuItem
-                    onClick={() => handleCkickItem(setting)}
-                    sx={{ p: 1 }}
-                    key={setting}
-                  >
-                    <Typography textAlign="center">{setting}</Typography>
-                  </MenuItem>
+                  <Link to={setting.path} key={setting.name}>
+                    <MenuItem
+                      onClick={() => handleCkickItem(setting.name)}
+                      sx={{ p: 1 }}
+                    >
+                      <Typography textAlign="center">{setting.name}</Typography>
+                    </MenuItem>
+                  </Link>
                 ))}
               </Menu>
             </Box>

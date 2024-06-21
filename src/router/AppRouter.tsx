@@ -13,8 +13,9 @@ const SignUp = lazy(() => import("@pages/SignUp"));
 const SignIn = lazy(() => import("@pages/SignIn"));
 const Cart = lazy(() => import("@pages/Cart"));
 const Wishlist = lazy(() => import("@pages/Wishlist"));
-const Profile = lazy(() => import("@pages/Profile"));
+const Account = lazy(() => import("@pages/Account"));
 const Orders = lazy(() => import("@pages/Orders"));
+const ProfileLayout = lazy(() => import("@pages/ProfileLayout"));
 
 const router = createBrowserRouter([
   {
@@ -110,24 +111,32 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/Profile",
+        path: "/profile",
         element: (
           <SuspensePage>
             <ProtecteRoute>
-              <Profile />
+              <ProfileLayout />
             </ProtecteRoute>
           </SuspensePage>
         ),
-      },
-      {
-        path: "/Orders",
-        element: (
-          <SuspensePage>
-            <ProtecteRoute>
-              <Orders />
-            </ProtecteRoute>
-          </SuspensePage>
-        ),
+        children: [
+          {
+            index: true,
+            element: (
+              <SuspensePage>
+                <Account />
+              </SuspensePage>
+            ),
+          },
+          {
+            path: "orders",
+            element: (
+              <SuspensePage>
+                <Orders />
+              </SuspensePage>
+            ),
+          },
+        ],
       },
     ],
   },

@@ -4,12 +4,12 @@ import axios from "axios";
 
 const actPlaceOrder = createAsyncThunk(
   "orders/actPlaceOrder",
-  async (subtotle: number, { rejectWithValue, getState }) => {
+  async (subtotal: number, { rejectWithValue, getState }) => {
     const {
       auth: {
         user: { id: userId },
       },
-      cart: { productsFullinfo: cartItems },
+      cart: { productsFullinfo: cartItems, items },
     } = getState() as RootState;
 
     if (cartItems.length === 0) return rejectWithValue("Cart is Empty");
@@ -18,16 +18,16 @@ const actPlaceOrder = createAsyncThunk(
     let error = false;
     let errorMag = "";
 
-    const items = cartItems.map((el) => ({
+    const products = cartItems.map((el) => ({
       title: el.title,
       price: el.price,
       img: el.img,
-      quantity: el.quantity,
+      quantity: items.find((item) => item.id === el.id)?.quantity || 1,
       id: el.id,
     }));
 
     await axios
-      .post(`/orders`, { userId, subtotle, items })
+      .post(`/orders`, { userId, subtotal, items: products })
       .then((res) => res.data)
       .then((dataResponse) => {
         data = dataResponse;

@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import TLoading from "@types/loading";
 import TOrder from "@types/order";
 import actPlaceOrder from "./act/actPlaceOrder";
+import actGetOrders from "./act/actGetOrders";
 
 type TOrdersState = {
   loading: TLoading;
@@ -26,6 +27,12 @@ const ordersSlice = createSlice({
     cleanError: (state) => {
       state.error = null;
     },
+
+    cleanUp: (state) => {
+      state.loading = "idle";
+      state.error = null;
+      state.orderList = [];
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -40,9 +47,23 @@ const ordersSlice = createSlice({
         state.loading = "failed";
         state.error = action.payload as string;
       });
+
+    builder
+      .addCase(actGetOrders.pending, (state) => {
+        state.loading = "pending";
+        state.error = null;
+      })
+      .addCase(actGetOrders.fulfilled, (state, action) => {
+        state.orderList = action.payload;
+        state.loading = "succeeded";
+      })
+      .addCase(actGetOrders.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload as string;
+      });
   },
 });
 
-export { actPlaceOrder };
-export const { clean, cleanError } = ordersSlice.actions;
+export { actPlaceOrder, actGetOrders };
+export const { clean, cleanError, cleanUp } = ordersSlice.actions;
 export default ordersSlice.reducer;
