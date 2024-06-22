@@ -8,8 +8,8 @@ import { useNavigate } from "react-router-dom";
 
 const Product = memo(({ id, img, title, price, quantity, max }: TProduct) => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate()
-  const accessToken = useAppSelector(state => state.auth.accessToken)
+  const navigate = useNavigate();
+  const accessToken = useAppSelector((state) => state.auth.accessToken);
   const [isDisabled, setIsDisabled] = useState(false);
   const isLiked = useAppSelector((state) => state.wishlist.itemsId).includes(
     id,
@@ -29,11 +29,11 @@ const Product = memo(({ id, img, title, price, quantity, max }: TProduct) => {
   };
 
   const handleLike = () => {
-    if (!accessToken){
+    if (!accessToken) {
       navigate("/signin");
-      return
+      return;
     }
-       if (loading) return;
+    if (loading) return;
     setLoading(true);
     dispatch(actToggleWishlistItem(id))
       .unwrap()
