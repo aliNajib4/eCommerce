@@ -4,9 +4,12 @@ import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { actToggleWishlistItem } from "@store/wishlist/wishlistSlice";
 import { type TProduct } from "@types/.";
 import { useState, memo } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Product = memo(({ id, img, title, price, quantity, max }: TProduct) => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate()
+  const accessToken = useAppSelector(state => state.auth.accessToken)
   const [isDisabled, setIsDisabled] = useState(false);
   const isLiked = useAppSelector((state) => state.wishlist.itemsId).includes(
     id,
@@ -26,7 +29,11 @@ const Product = memo(({ id, img, title, price, quantity, max }: TProduct) => {
   };
 
   const handleLike = () => {
-    if (loading) return;
+    if (!accessToken){
+      navigate("/signin");
+      return
+    }
+       if (loading) return;
     setLoading(true);
     dispatch(actToggleWishlistItem(id))
       .unwrap()
