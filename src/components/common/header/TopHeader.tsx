@@ -1,7 +1,14 @@
 import { Box, Link } from "@mui/material";
 import { Link as routerLink } from "react-router-dom";
+import CloseIcon from "@mui/icons-material/Close";
+import { useState } from "react";
 
 const TopHeader = () => {
+  const [show, setShow] = useState(true);
+  if (!show) return;
+  const handleClose = () => {
+    setShow(false);
+  };
   return (
     <Box
       sx={{
@@ -24,6 +31,9 @@ const TopHeader = () => {
       >
         Sign Up Now
       </Link>
+      <Box component="button" sx={{ ml: 2 }} onClick={handleClose}>
+        <CloseIcon fontSize="small" />
+      </Box>
     </Box>
   );
 };
