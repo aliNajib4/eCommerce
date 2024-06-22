@@ -168,16 +168,16 @@ const Header = () => {
           </Box>
         </Box>
         <TextField id="outlined" label="Search" size="small" />
-        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+        <Box sx={{ display: "flex", alignItems: "center", gap: 2.5 }}>
           <HaederCounter
             quantitySeletor={wishlistQuantitySeletor}
             url="/wishlist"
-            Icon={<Wishlist fontSize="small" />}
+            Icon={<Wishlist fontSize="medium" />}
           />
           <HaederCounter
             quantitySeletor={CartQuantitySeletor}
             url="/cart"
-            Icon={<ShoppingBag fontSize="small" />}
+            Icon={<ShoppingBag fontSize="medium" />}
           />
           {!accessToken ? (
             <>
@@ -191,7 +191,7 @@ const Header = () => {
                     "&:hover": {
                       borderColor: "#333",
                       color: "#333",
-                      bgcolor: "#eee"
+                      bgcolor: "#eee",
                     },
                   }}
                 >
@@ -205,9 +205,8 @@ const Header = () => {
                   sx={{
                     color: "white",
                     bgcolor: "black",
-                    "&:hover": { 
+                    "&:hover": {
                       bgcolor: "#333",
-                      // color: "#333"
                     },
                   }}
                 >
@@ -234,9 +233,11 @@ const Header = () => {
                         fontWeight: "bold",
                         fontSize: "16px",
                       }}
-                    >{`${name}`}</Typography>
+                    >
+                      {name}
+                    </Typography>
                     <IconButton sx={{ p: 0 }}>
-                      <Avatar>{name.toUpperCase()}</Avatar>
+                      <Avatar>{name[0].toUpperCase()}</Avatar>
                     </IconButton>
                   </Box>
                 </Tooltip>
@@ -261,6 +262,7 @@ const Header = () => {
                       component={routerLink}
                       to={setting.path}
                       key={setting.name}
+                      sx={{ color: "black", textDecoration: "none" }}
                     >
                       <MenuItem
                         onClick={() => handleCkickItem(setting.name)}

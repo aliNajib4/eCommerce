@@ -6,13 +6,13 @@ import actGetWishlist from "@store/wishlist/act/actGetWishlist";
 const useHeader = () => {
   const dispatch = useAppDispatch();
   const { user, accessToken } = useAppSelector((state) => state.auth);
-  
+
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
   const [showCategories, setShowCategories] = useState(false);
 
   const handleClickShop = () => {
-    setShowCategories(prev => !prev)
-  }
+    setShowCategories((prev) => !prev);
+  };
 
   const handleOpenUserMenu = (e: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(e.currentTarget);
@@ -33,12 +33,12 @@ const useHeader = () => {
   return {
     accessToken,
     handleOpenUserMenu,
-    name: user?.firstName + user?.lastName,
+    name: user?.firstName + " " + user?.lastName,
     anchorElUser,
     handleCkickItem,
     handleCloseUserMenu,
     handleClickShop,
-    showCategories
+    showCategories,
   };
 };
 
