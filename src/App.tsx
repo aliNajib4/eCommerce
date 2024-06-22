@@ -10,8 +10,8 @@ const App = () => {
     <Provider store={store}>
       <PersistGate persistor={persistor} loading={null}>
         <TopHeader />
-        <div className="container flex min-h-screen flex-col font-mono">
           <Header />
+        <div className="container flex min-h-screen flex-col font-mono">
           <main className="flex-grow">
             <Outlet />
           </main>

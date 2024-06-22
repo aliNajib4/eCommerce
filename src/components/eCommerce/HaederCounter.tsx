@@ -2,12 +2,23 @@ import { Link } from "react-router-dom";
 import { useAppSelector } from "@store/hooks";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import { RootState } from "@store/store";
+import { Badge, keyframes } from "@mui/material";
 
 type TProps = {
   quantitySeletor: (state: RootState) => number;
   url: string;
   Icon: ReactNode;
 };
+
+const pump = keyframes`
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+`;
+
 
 const HaederCounter = ({ quantitySeletor, url, Icon }: TProps) => {
   const quantity = useAppSelector(quantitySeletor);
@@ -27,7 +38,7 @@ const HaederCounter = ({ quantitySeletor, url, Icon }: TProps) => {
 
   return (
     <Link to={url}>
-      <div className="relative">
+      {/* <div className="relative">
         {Icon}
         {quantity !== 0 && (
           <div
@@ -39,7 +50,14 @@ const HaederCounter = ({ quantitySeletor, url, Icon }: TProps) => {
             <span className="text-xs text-white">{quantity}</span>
           </div>
         )}
-      </div>
+      </div> */}
+      <Badge
+        badgeContent={quantity}
+        color="error"
+        max={9}
+              >
+        {Icon}
+      </Badge>
     </Link>
   );
 };
