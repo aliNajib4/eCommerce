@@ -16,7 +16,7 @@ type TcartItem = TProduct & {
 
 const CartItem = memo(
   ({
-    img,
+    main_img,
     title,
     price,
     quantity,
@@ -37,7 +37,7 @@ const CartItem = memo(
       <div className="flex items-center justify-between border-b-4 px-3 pb-5 pt-3">
         <div className="flex items-center gap-5">
           <div className="m-auto max-h-24 max-w-24 overflow-hidden rounded-full text-center">
-            <img src={img} alt="image product" />
+            <img src={main_img} alt="image product" />
           </div>
           <div className="flex flex-col items-start justify-between gap-5">
             <div>

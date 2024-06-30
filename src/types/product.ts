@@ -3,9 +3,11 @@ type TProduct = {
   title: string;
   price: string;
   cat_prefix?: string;
-  img: string;
+  main_img: string;
+  "Sub-imgs": string[];
   max?: number;
   quantity?: number;
+  rating: 4.2;
 };
 
 export default TProduct;

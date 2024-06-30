@@ -37,18 +37,23 @@ const Orders = () => {
             open={openDialog}
           >
             <DialogContent dividers>
-              {itemsOrderSelected.map(({ title, quantity, img, price, id }) => (
-                <div key={id} className="mb-8 flex items-start gap-5 last:mb-0">
-                  <div className="h-36 w-36 overflow-hidden rounded-full bg-gray-200">
-                    <img src={img} alt="image product" />
+              {itemsOrderSelected.map(
+                ({ title, quantity, main_img, price, id }) => (
+                  <div
+                    key={id}
+                    className="mb-8 flex items-start gap-5 last:mb-0"
+                  >
+                    <div className="h-36 w-36 overflow-hidden rounded-full bg-gray-200">
+                      <img src={main_img} alt="image product" />
+                    </div>
+                    <div className="mt-3 flex columns-1 flex-col gap-2">
+                      <h3 className="text-xl font-bold">Title: {title}</h3>
+                      <p className="text-lg">Quantity: {quantity}</p>
+                      <p className="text-lg">Price: {price}$</p>
+                    </div>
                   </div>
-                  <div className="mt-3 flex columns-1 flex-col gap-2">
-                    <h3 className="text-xl font-bold">Title: {title}</h3>
-                    <p className="text-lg">Quantity: {quantity}</p>
-                    <p className="text-lg">Price: {price}$</p>
-                  </div>
-                </div>
-              ))}
+                ),
+              )}
             </DialogContent>
           </Dialog>
           <TableContainer component={Paper}>

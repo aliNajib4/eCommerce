@@ -33,16 +33,16 @@ const pagesAccount = [
 
 const Categories = [
   {
-    name: "women",
-    path: "/categories/products/women",
+    name: "gym",
+    path: "/categories/products/gym",
   },
   {
-    name: "men",
-    path: "/categories/products/men",
+    name: "formal",
+    path: "/categories/products/formal",
   },
   {
-    name: "kids",
-    path: "/categories/products/kids",
+    name: "casual",
+    path: "/categories/products/casual",
   },
   {
     name: "all",
@@ -140,29 +140,29 @@ const Header = () => {
               }}
             >
               {Categories.map(({ name, path }, idx) => (
-                <Box
-                  component="li"
-                  key={idx}
-                  sx={{
-                    cursor: "pointer",
-                    px: 6,
-                    py: 3,
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    "&:hover": {
-                      bgcolor: "#eee",
-                    },
-                  }}
+                <Link
+                  component={routerLink}
+                  to={path}
+                  sx={{ color: "black", textDecoration: "none" }}
                 >
-                  <Link
-                    component={routerLink}
-                    to={path}
-                    sx={{ color: "black", textDecoration: "none" }}
+                  <Box
+                    component="li"
+                    key={idx}
+                    sx={{
+                      cursor: "pointer",
+                      px: 6,
+                      py: 3,
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      "&:hover": {
+                        bgcolor: "#eee",
+                      },
+                    }}
                   >
                     {name}
-                  </Link>
-                </Box>
+                  </Box>
+                </Link>
               ))}
             </Container>
           </Box>
