@@ -26,7 +26,7 @@
       "@util/*": ["src/utils/*"],
       "@services/*": ["src/services/*"],
       "@types/*": ["src/types/*"],
-      "@validation/*": ["src/validation/*"],
+      "@validation/*": ["src/validation/*"]
     },
 
     /* Linting */
