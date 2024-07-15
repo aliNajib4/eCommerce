@@ -1,5 +1,36 @@
+// src/styles/main.scss
+
+// Auth
+@use "./components/auth/ProtecteRoute";
+
+// Common
+@use "./components/common/footer/Footer";
+@use "./components/common/grid_list/GridList";
+@use "./components/common/header/Header";
+@use "./components/common/header/TopHeader";
+
+// eCommerce
+@use "./components/eCommerce/CartItem";
+@use "./components/eCommerce/Category";
+@use "./components/eCommerce/HaederCounter";
+@use "./components/eCommerce/Product";
+
+// Feedback
+@use "./components/feedback/loading/Loading";
+@use "./components/feedback/skeleton/skeletonCategory";
+@use "./components/feedback/skeleton/skeletonProduct";
+@use "./components/feedback/skeleton/skeletonWishlist";
+@use "./components/feedback/LottieHandler.scss";
+@use "./components/feedback/SuspensePage";
+
+// Forms
+@use "./components/forms/Input";
+
+// Base
 @use "./base/reset";
 @use "./base/typography";
+
+// Pages
 @use "./pages/AboutUs";
 @use "./pages/Account";
 @use "./pages/Cart.scss";
