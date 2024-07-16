@@ -1,0 +1,13 @@
+.rating {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  p {
+    font-size: 18px;
+    font-weight: 700;
+    span {
+      color: gray;
+    }
+  }
+}
