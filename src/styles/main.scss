@@ -1,5 +1,8 @@
 // src/styles/main.scss
 
+// Variables
+@use "./variables/colors";
+
 // Auth
 @use "./components/auth/ProtecteRoute";
 
