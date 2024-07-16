@@ -10,3 +10,4 @@ export { default as Input } from "./forms/Input";
 export { default as ProtecteRoute } from "./auth/ProtecteRoute";
 export { default as TopHeader } from "./common/header/TopHeader";
 export { default as Rating } from "./eCommerce/Rating";
+export { default as Price } from "./eCommerce/Price";

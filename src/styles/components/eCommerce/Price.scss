@@ -1,0 +1,22 @@
+.price {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  .price_number {
+    font-weight: bold;
+    font-size: 24px;
+
+    &.before {
+      color: var(--gray60);
+      text-decoration-line: line-through;
+    }
+  }
+  .discount {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--danger);
+    padding: 6px 16px;
+    background-color: var(--bg-danger);
+    border-radius: 9999px;
+  }
+}
