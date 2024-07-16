@@ -1,0 +1,12 @@
+@mixin center($justify, $align) {
+  display: flex;
+  justify-content: if($justify, center, start);
+  align-items: if($align, center, start);
+}
+
+@mixin line-clamp($number-lines) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $number-lines;
+}
