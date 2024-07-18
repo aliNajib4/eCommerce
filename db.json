@@ -702,5 +702,58 @@
       "max": 4,
       "rating": 4
     }
+  ],
+  "top-selling": [
+    {
+      "id": "1",
+      "title": "Jersey top",
+      "price": 249,
+      "cat_prefix": "gym",
+      "main_img": "https://via.placeholder.com/300?text=Gym+Jersey+Top",
+      "Sub-imgs": [
+        "https://via.placeholder.com/300?text=Gym+Jersey+Top+1",
+        "https://via.placeholder.com/300?text=Gym+Jersey+Top+2",
+        "https://via.placeholder.com/300?text=Gym+Jersey+Top+3"
+      ],
+      "max": 4,
+      "rating": 4.2
+    },
+    {
+      "id": "6",
+      "title": "Velour top",
+      "price": 300,
+      "cat_prefix": "casual",
+      "main_img": "https://via.placeholder.com/300?text=Casual+Velour+Top",
+      "Sub-imgs": [
+        "https://via.placeholder.com/300?text=Casual+Velour+Top+1",
+        "https://via.placeholder.com/300?text=Casual+Velour+Top+2"
+      ],
+      "max": 2,
+      "rating": 4.3
+    },
+    {
+      "id": "7",
+      "title": "Pile all-in-one suit with ears",
+      "price": 500,
+      "cat_prefix": "party",
+      "main_img": "https://via.placeholder.com/300?text=Party+Pile+All-In-One+Suit",
+      "Sub-imgs": [
+        "https://via.placeholder.com/300?text=Party+Pile+All-In-One+Suit+1",
+        "https://via.placeholder.com/300?text=Party+Pile+All-In-One+Suit+2"
+      ],
+      "max": 2,
+      "rating": 4.7,
+      "discount": 20
+    },
+    {
+      "id": "66",
+      "title": "Formal Pocket Square",
+      "price": 50,
+      "cat_prefix": "formal",
+      "main_img": "https://via.placeholder.com/300?text=Formal+Pocket+Square",
+      "Sub-imgs": [],
+      "max": 4,
+      "rating": 4.3
+    }
   ]
 }
