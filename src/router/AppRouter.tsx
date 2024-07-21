@@ -58,7 +58,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/categories/products/:id",
+        path: "/products/:id",
         element: (
           <SuspensePage>
             <Products />

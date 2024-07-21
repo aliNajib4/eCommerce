@@ -32,15 +32,15 @@ const pagesAccount = [
 const Categories = [
   {
     name: "gym",
-    path: "/categories/products/gym",
+    path: "/products/gym",
   },
   {
     name: "formal",
-    path: "/categories/products/formal",
+    path: "/products/formal",
   },
   {
     name: "casual",
-    path: "/categories/products/casual",
+    path: "/products/casual",
   },
 ];
 
