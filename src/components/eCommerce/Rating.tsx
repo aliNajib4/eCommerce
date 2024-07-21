@@ -3,10 +3,11 @@ import Star from "@assets/svgs/star.svg?react";
 type TProps = {
   rating: number;
   width?: number;
+  isText?: boolean;
   textClass?: string;
 };
 
-const Rating = ({ rating, width = 16, textClass }: TProps) => {
+const Rating = ({ rating, width = 16, isText = true, textClass }: TProps) => {
   const stars = Array(Math.ceil(rating))
     .fill(0)
     .map((_, idx) => (
@@ -24,14 +25,14 @@ const Rating = ({ rating, width = 16, textClass }: TProps) => {
         <Star width={width} />
       </div>
     ));
-
-  console.log(rating % 1 !== 0 ? `${(rating % 1) * 16}px` : "16px", rating);
   return (
     <div className="rating">
       {stars}
-      <p className={textClass}>
-        {rating}/<span>5</span>
-      </p>
+      {isText && (
+        <p className={textClass}>
+          {rating}/<span>5</span>
+        </p>
+      )}
     </div>
   );
 };
