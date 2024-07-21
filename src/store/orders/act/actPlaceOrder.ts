@@ -21,7 +21,7 @@ const actPlaceOrder = createAsyncThunk(
     const products = cartItems.map((el) => ({
       title: el.title,
       price: el.price,
-      img: el.img,
+      img: el.main_img,
       quantity: items.find((item) => item.id === el.id)?.quantity || 1,
       id: el.id,
     }));

@@ -12,7 +12,7 @@ const allPriceSeletor = createSelector(
     products.reduce(
       (total, { price, id }) =>
         total +
-        +price * (items.find(({ id: id2 }) => id === id2)?.quantity ?? 0),
+        price * (items.find(({ id: id2 }) => id === id2)?.quantity ?? 0),
       0,
     ),
 );
