@@ -30,7 +30,10 @@
         "https://via.placeholder.com/300?text=Gym+Jersey+Top+3"
       ],
       "max": 4,
-      "rating": 4.2
+      "rating": 4.2,
+      "color": "sky",
+      "size": "4X-Large",
+      "type": "Hoodies"
     },
     {
       "id": "2",
@@ -44,7 +47,10 @@
       ],
       "max": 4,
       "rating": 4,
-      "discount": 10
+      "discount": 10,
+      "color": "blue",
+      "size": "XX-Small",
+      "type": "Jeans"
     },
     {
       "id": "3",
@@ -56,7 +62,10 @@
         "https://via.placeholder.com/300?text=Gym+Cotton+Polo+Shirt+1"
       ],
       "max": 3,
-      "rating": 3.8
+      "rating": 3.8,
+      "color": "blue",
+      "size": "X-Small",
+      "type": "Jeans"
     },
     {
       "id": "4",
@@ -67,7 +76,10 @@
       "Sub-imgs": [],
       "max": 2,
       "rating": 3.5,
-      "discount": 15
+      "discount": 15,
+      "color": "blue",
+      "size": "3X-Large",
+      "type": "T-shirts"
     },
     {
       "id": "5",
@@ -81,7 +93,10 @@
         "https://via.placeholder.com/300?text=Formal+Sweatshirt+Shorts+3"
       ],
       "max": 3,
-      "rating": 4.5
+      "rating": 4.5,
+      "color": "green",
+      "size": "4X-Large",
+      "type": "Shorts"
     },
     {
       "id": "6",
@@ -94,7 +109,10 @@
         "https://via.placeholder.com/300?text=Casual+Velour+Top+2"
       ],
       "max": 2,
-      "rating": 4.3
+      "rating": 4.3,
+      "color": "purple",
+      "size": "Medium",
+      "type": "T-shirts"
     },
     {
       "id": "7",
@@ -108,7 +126,10 @@
       ],
       "max": 2,
       "rating": 4.7,
-      "discount": 20
+      "discount": 20,
+      "color": "orange",
+      "size": "Small",
+      "type": "T-shirts"
     },
     {
       "id": "8",
@@ -122,7 +143,10 @@
         "https://via.placeholder.com/300?text=Gym+Regular+Fit+Football+Shirt+3"
       ],
       "max": 2,
-      "rating": 4.1
+      "rating": 4.1,
+      "color": "sky",
+      "size": "XX-Large",
+      "type": "Shirts"
     },
     {
       "id": "9",
@@ -136,7 +160,10 @@
         "https://via.placeholder.com/300?text=Gym+Athletic+Shorts+3"
       ],
       "max": 5,
-      "rating": 4
+      "rating": 4,
+      "color": "orange",
+      "size": "Small",
+      "type": "Shorts"
     },
     {
       "id": "10",
@@ -149,7 +176,10 @@
         "https://via.placeholder.com/300?text=Gym+Workout+Tank+Top+2"
       ],
       "max": 4,
-      "rating": 3.9
+      "rating": 3.9,
+      "color": "yellow",
+      "size": "XX-Small",
+      "type": "T-shirts"
     },
     {
       "id": "11",
@@ -163,7 +193,10 @@
         "https://via.placeholder.com/300?text=Gym+Compression+Leggings+3"
       ],
       "max": 3,
-      "rating": 4.3
+      "rating": 4.3,
+      "color": "orange",
+      "size": "3X-Large",
+      "type": "Shorts"
     },
     {
       "id": "12",
@@ -176,7 +209,10 @@
         "https://via.placeholder.com/300?text=Gym+Sports+Bra+2"
       ],
       "max": 3,
-      "rating": 4.4
+      "rating": 4.4,
+      "color": "black",
+      "size": "Large",
+      "type": "Shirts"
     },
     {
       "id": "13",
@@ -190,7 +226,10 @@
         "https://via.placeholder.com/300?text=Gym+Socks+3"
       ],
       "max": 5,
-      "rating": 3.8
+      "rating": 3.8,
+      "color": "yellow",
+      "size": "XX-Small",
+      "type": "Shirts"
     },
     {
       "id": "14",
@@ -203,7 +242,10 @@
         "https://via.placeholder.com/300?text=Formal+Blazer+2"
       ],
       "max": 3,
-      "rating": 4.6
+      "rating": 4.6,
+      "color": "yellow",
+      "size": "3X-Large",
+      "type": "Shorts"
     },
     {
       "id": "15",
@@ -213,7 +255,10 @@
       "main_img": "https://via.placeholder.com/300?text=Formal+Chinos",
       "Sub-imgs": [],
       "max": 4,
-      "rating": 4
+      "rating": 4,
+      "color": "orange",
+      "size": "Large",
+      "type": "Hoodies"
     },
     {
       "id": "16",
@@ -224,7 +269,10 @@
       "Sub-imgs": [],
       "max": 2,
       "rating": 3.5,
-      "discount": 10
+      "discount": 10,
+      "color": "purple",
+      "size": "3X-Large",
+      "type": "Shorts"
     },
     {
       "id": "17",
@@ -234,7 +282,10 @@
       "main_img": "https://via.placeholder.com/300?text=Formal+Pleated+Skirt",
       "Sub-imgs": [],
       "max": 3,
-      "rating": 4.2
+      "rating": 4.2,
+      "color": "orange",
+      "size": "XX-Large",
+      "type": "Shorts"
     },
     {
       "id": "18",
@@ -245,7 +296,10 @@
       "Sub-imgs": [],
       "max": 4,
       "rating": 4.1,
-      "discount": 15
+      "discount": 15,
+      "color": "white",
+      "size": "3X-Large",
+      "type": "Hoodies"
     },
     {
       "id": "19",
@@ -255,7 +309,10 @@
       "main_img": "https://via.placeholder.com/300?text=Casual+Jeans",
       "Sub-imgs": [],
       "max": 3,
-      "rating": 4.3
+      "rating": 4.3,
+      "color": "white",
+      "size": "3X-Large",
+      "type": "T-shirts"
     },
     {
       "id": "20",
@@ -268,7 +325,10 @@
         "https://via.placeholder.com/300?text=Casual+Sweatshirt+2"
       ],
       "max": 4,
-      "rating": 4
+      "rating": 4,
+      "color": "green",
+      "size": "4X-Large",
+      "type": "Hoodies"
     },
     {
       "id": "21",
@@ -281,7 +341,10 @@
         "https://via.placeholder.com/300?text=Party+Dress+2"
       ],
       "max": 3,
-      "rating": 4.8
+      "rating": 4.8,
+      "color": "purple",
+      "size": "Small",
+      "type": "Shirts"
     },
     {
       "id": "22",
@@ -291,7 +354,10 @@
       "main_img": "https://via.placeholder.com/300?text=Party+Heeled+Sandals",
       "Sub-imgs": [],
       "max": 2,
-      "rating": 4.4
+      "rating": 4.4,
+      "color": "green",
+      "size": "XX-Large",
+      "type": "Hoodies"
     },
     {
       "id": "23",
@@ -301,7 +367,10 @@
       "main_img": "https://via.placeholder.com/300?text=Party+Clutch+Bag",
       "Sub-imgs": [],
       "max": 3,
-      "rating": 4
+      "rating": 4,
+      "color": "yellow",
+      "size": "4X-Large",
+      "type": "Shorts"
     },
     {
       "id": "37",
@@ -314,7 +383,10 @@
         "https://via.placeholder.com/300?text=Gym+High-Impact+Sports+Bra+2"
       ],
       "max": 3,
-      "rating": 4.5
+      "rating": 4.5,
+      "color": "black",
+      "size": "X-Large",
+      "type": "Hoodies"
     },
     {
       "id": "38",
@@ -324,7 +396,10 @@
       "main_img": "https://via.placeholder.com/300?text=Gym+Yoga+Mat",
       "Sub-imgs": [],
       "max": 5,
-      "rating": 4.2
+      "rating": 4.2,
+      "color": "yellow",
+      "size": "XX-Small",
+      "type": "Jeans"
     },
     {
       "id": "39",
@@ -338,7 +413,10 @@
         "https://via.placeholder.com/300?text=Gym+Running+Shoes+3"
       ],
       "max": 4,
-      "rating": 4.7
+      "rating": 4.7,
+      "color": "sky",
+      "size": "Large",
+      "type": "Shirts"
     },
     {
       "id": "40",
@@ -348,7 +426,10 @@
       "main_img": "https://via.placeholder.com/300?text=Gym+CrossFit+Gloves",
       "Sub-imgs": [],
       "max": 5,
-      "rating": 4
+      "rating": 4,
+      "color": "orange",
+      "size": "4X-Large",
+      "type": "Hoodies"
     },
     {
       "id": "41",
@@ -361,7 +442,10 @@
         "https://via.placeholder.com/300?text=Gym+Smart+Fitness+Tracker+2"
       ],
       "max": 3,
-      "rating": 4.3
+      "rating": 4.3,
+      "color": "purple",
+      "size": "Large",
+      "type": "Hoodies"
     },
     {
       "id": "42",
@@ -371,7 +455,10 @@
       "main_img": "https://via.placeholder.com/300?text=Gym+Dumbbell+Set",
       "Sub-imgs": [],
       "max": 4,
-      "rating": 4.5
+      "rating": 4.5,
+      "color": "red",
+      "size": "X-Small",
+      "type": "Hoodies"
     },
     {
       "id": "43",
@@ -381,7 +468,10 @@
       "main_img": "https://via.placeholder.com/300?text=Formal+Leather+Belt",
       "Sub-imgs": [],
       "max": 5,
-      "rating": 4.1
+      "rating": 4.1,
+      "color": "yellow",
+      "size": "Medium",
+      "type": "Hoodies"
     },
     {
       "id": "44",
@@ -394,7 +484,10 @@
         "https://via.placeholder.com/300?text=Formal+Designer+Necktie+2"
       ],
       "max": 4,
-      "rating": 4.3
+      "rating": 4.3,
+      "color": "yellow",
+      "size": "X-Small",
+      "type": "T-shirts"
     },
     {
       "id": "45",
@@ -404,7 +497,10 @@
       "main_img": "https://via.placeholder.com/300?text=Formal+Leather+Shoes",
       "Sub-imgs": [],
       "max": 3,
-      "rating": 4.6
+      "rating": 4.6,
+      "color": "pink",
+      "size": "X-Small",
+      "type": "Hoodies"
     },
     {
       "id": "46",
@@ -418,7 +514,10 @@
         "https://via.placeholder.com/300?text=Formal+Silk+Bow+Tie+3"
       ],
       "max": 4,
-      "rating": 4.4
+      "rating": 4.4,
+      "color": "purple",
+      "size": "4X-Large",
+      "type": "Shirts"
     },
     {
       "id": "47",
@@ -428,7 +527,10 @@
       "main_img": "https://via.placeholder.com/300?text=Casual+Denim+Jacket",
       "Sub-imgs": [],
       "max": 3,
-      "rating": 4.2
+      "rating": 4.2,
+      "color": "black",
+      "size": "X-Large",
+      "type": "Shorts"
     },
     {
       "id": "48",
@@ -441,7 +543,10 @@
         "https://via.placeholder.com/300?text=Casual+Sneakers+2"
       ],
       "max": 4,
-      "rating": 4
+      "rating": 4,
+      "color": "orange",
+      "size": "XX-Small",
+      "type": "Shirts"
     },
     {
       "id": "49",
@@ -451,7 +556,10 @@
       "main_img": "https://via.placeholder.com/300?text=Casual+Backpack",
       "Sub-imgs": [],
       "max": 5,
-      "rating": 4.3
+      "rating": 4.3,
+      "color": "yellow",
+      "size": "X-Small",
+      "type": "Jeans"
     },
     {
       "id": "50",
@@ -464,7 +572,10 @@
         "https://via.placeholder.com/300?text=Casual+Printed+Shirt+2"
       ],
       "max": 4,
-      "rating": 4.1
+      "rating": 4.1,
+      "color": "orange",
+      "size": "X-Small",
+      "type": "Shorts"
     },
     {
       "id": "51",
@@ -477,7 +588,10 @@
         "https://via.placeholder.com/300?text=Party+Cocktail+Dress+2"
       ],
       "max": 3,
-      "rating": 4.5
+      "rating": 4.5,
+      "color": "sky",
+      "size": "X-Large",
+      "type": "T-shirts"
     },
     {
       "id": "52",
@@ -491,7 +605,10 @@
         "https://via.placeholder.com/300?text=Party+Heels+3"
       ],
       "max": 4,
-      "rating": 4.2
+      "rating": 4.2,
+      "color": "purple",
+      "size": "Small",
+      "type": "Hoodies"
     },
     {
       "id": "53",
@@ -501,7 +618,10 @@
       "main_img": "https://via.placeholder.com/300?text=Party+Sequin+Clutch",
       "Sub-imgs": [],
       "max": 5,
-      "rating": 4.3
+      "rating": 4.3,
+      "color": "red",
+      "size": "Large",
+      "type": "T-shirts"
     },
     {
       "id": "54",
@@ -514,7 +634,10 @@
         "https://via.placeholder.com/300?text=Party+Men's+Blazer+2"
       ],
       "max": 3,
-      "rating": 4.4
+      "rating": 4.4,
+      "color": "green",
+      "size": "X-Small",
+      "type": "Shorts"
     },
     {
       "id": "55",
@@ -524,7 +647,10 @@
       "main_img": "https://via.placeholder.com/300?text=Gym+Towel",
       "Sub-imgs": [],
       "max": 5,
-      "rating": 4
+      "rating": 4,
+      "color": "yellow",
+      "size": "Medium",
+      "type": "Hoodies"
     },
     {
       "id": "56",
@@ -537,7 +663,10 @@
         "https://via.placeholder.com/300?text=Formal+Smart+Watch+2"
       ],
       "max": 4,
-      "rating": 4.6
+      "rating": 4.6,
+      "color": "pink",
+      "size": "3X-Large",
+      "type": "T-shirts"
     },
     {
       "id": "57",
@@ -551,7 +680,10 @@
         "https://via.placeholder.com/300?text=Casual+Denim+Shorts+3"
       ],
       "max": 5,
-      "rating": 4.2
+      "rating": 4.2,
+      "color": "blue",
+      "size": "Medium",
+      "type": "T-shirts"
     },
     {
       "id": "58",
@@ -561,7 +693,10 @@
       "main_img": "https://via.placeholder.com/300?text=Formal+Cufflinks",
       "Sub-imgs": [],
       "max": 4,
-      "rating": 4
+      "rating": 4,
+      "color": "black",
+      "size": "3X-Large",
+      "type": "T-shirts"
     },
     {
       "id": "59",
@@ -574,7 +709,10 @@
         "https://via.placeholder.com/300?text=Casual+Hoodie+2"
       ],
       "max": 3,
-      "rating": 4.1
+      "rating": 4.1,
+      "color": "green",
+      "size": "X-Small",
+      "type": "Shorts"
     },
     {
       "id": "60",
@@ -584,7 +722,10 @@
       "main_img": "https://via.placeholder.com/300?text=Party+Sequin+Skirt",
       "Sub-imgs": [],
       "max": 4,
-      "rating": 4.3
+      "rating": 4.3,
+      "color": "white",
+      "size": "3X-Large",
+      "type": "Shorts"
     },
     {
       "id": "61",
@@ -597,7 +738,10 @@
         "https://via.placeholder.com/300?text=Gym+Compression+Pants+2"
       ],
       "max": 5,
-      "rating": 4.4
+      "rating": 4.4,
+      "color": "sky",
+      "size": "Large",
+      "type": "Shirts"
     },
     {
       "id": "62",
@@ -607,7 +751,10 @@
       "main_img": "https://via.placeholder.com/300?text=Formal+Leather+Briefcase",
       "Sub-imgs": [],
       "max": 3,
-      "rating": 4.5
+      "rating": 4.5,
+      "color": "pink",
+      "size": "Small",
+      "type": "Hoodies"
     },
     {
       "id": "63",
@@ -620,7 +767,10 @@
         "https://via.placeholder.com/300?text=Casual+Chinos+2"
       ],
       "max": 4,
-      "rating": 4.2
+      "rating": 4.2,
+      "color": "yellow",
+      "size": "Large",
+      "type": "T-shirts"
     },
     {
       "id": "64",
@@ -630,7 +780,10 @@
       "main_img": "https://via.placeholder.com/300?text=Party+Statement+Earrings",
       "Sub-imgs": [],
       "max": 5,
-      "rating": 4.1
+      "rating": 4.1,
+      "color": "green",
+      "size": "X-Large",
+      "type": "Shirts"
     },
     {
       "id": "65",
@@ -640,7 +793,10 @@
       "main_img": "https://via.placeholder.com/300?text=Gym+Water+Bottle",
       "Sub-imgs": [],
       "max": 5,
-      "rating": 4
+      "rating": 4,
+      "color": "sky",
+      "size": "X-Large",
+      "type": "Hoodies"
     },
     {
       "id": "66",
@@ -650,7 +806,10 @@
       "main_img": "https://via.placeholder.com/300?text=Formal+Pocket+Square",
       "Sub-imgs": [],
       "max": 4,
-      "rating": 4.3
+      "rating": 4.3,
+      "color": "white",
+      "size": "4X-Large",
+      "type": "Shorts"
     },
     {
       "id": "67",
@@ -664,7 +823,10 @@
         "https://via.placeholder.com/300?text=Casual+Printed+T-Shirt+3"
       ],
       "max": 5,
-      "rating": 4.2
+      "rating": 4.2,
+      "color": "green",
+      "size": "XX-Small",
+      "type": "Shirts"
     },
     {
       "id": "68",
@@ -674,60 +836,71 @@
       "main_img": "https://via.placeholder.com/300?text=Party+Satin+Gloves",
       "Sub-imgs": [],
       "max": 4,
-      "rating": 4
+      "rating": 4,
+      "color": "sky",
+      "size": "X-Small",
+      "type": "T-shirts"
     }
   ],
   "top-selling": [
     {
-      "id": "1",
-      "title": "Jersey top",
-      "price": 249,
+      "id": "3",
+      "title": "Cotton polo shirt",
+      "price": 200,
       "cat_prefix": "gym",
-      "main_img": "https://via.placeholder.com/300?text=Gym+Jersey+Top",
+      "main_img": "https://via.placeholder.com/300?text=Gym+Cotton+Polo+Shirt",
       "Sub-imgs": [
-        "https://via.placeholder.com/300?text=Gym+Jersey+Top+1",
-        "https://via.placeholder.com/300?text=Gym+Jersey+Top+2",
-        "https://via.placeholder.com/300?text=Gym+Jersey+Top+3"
+        "https://via.placeholder.com/300?text=Gym+Cotton+Polo+Shirt+1"
       ],
-      "max": 4,
-      "rating": 4.2
+      "max": 3,
+      "rating": 3.8,
+      "color": "blue",
+      "size": "X-Small",
+      "type": "Jeans"
     },
     {
-      "id": "6",
-      "title": "Velour top",
-      "price": 300,
-      "cat_prefix": "casual",
-      "main_img": "https://via.placeholder.com/300?text=Casual+Velour+Top",
-      "Sub-imgs": [
-        "https://via.placeholder.com/300?text=Casual+Velour+Top+1",
-        "https://via.placeholder.com/300?text=Casual+Velour+Top+2"
-      ],
-      "max": 2,
-      "rating": 4.3
-    },
-    {
-      "id": "7",
-      "title": "Pile all-in-one suit with ears",
-      "price": 500,
-      "cat_prefix": "party",
-      "main_img": "https://via.placeholder.com/300?text=Party+Pile+All-In-One+Suit",
-      "Sub-imgs": [
-        "https://via.placeholder.com/300?text=Party+Pile+All-In-One+Suit+1",
-        "https://via.placeholder.com/300?text=Party+Pile+All-In-One+Suit+2"
-      ],
-      "max": 2,
-      "rating": 4.7,
-      "discount": 20
-    },
-    {
-      "id": "66",
-      "title": "Formal Pocket Square",
-      "price": 50,
+      "id": "4",
+      "title": "Cotton t-shirt",
+      "price": 100,
       "cat_prefix": "formal",
-      "main_img": "https://via.placeholder.com/300?text=Formal+Pocket+Square",
+      "main_img": "https://via.placeholder.com/300?text=Formal+Cotton+T-Shirt",
+      "Sub-imgs": [],
+      "max": 2,
+      "rating": 3.5,
+      "discount": 15,
+      "color": "blue",
+      "size": "3X-Large",
+      "type": "T-shirts"
+    },
+    {
+      "id": "67",
+      "title": "Casual Printed T-Shirt",
+      "price": 40,
+      "cat_prefix": "casual",
+      "main_img": "https://via.placeholder.com/300?text=Casual+Printed+T-Shirt",
+      "Sub-imgs": [
+        "https://via.placeholder.com/300?text=Casual+Printed+T-Shirt+1",
+        "https://via.placeholder.com/300?text=Casual+Printed+T-Shirt+2",
+        "https://via.placeholder.com/300?text=Casual+Printed+T-Shirt+3"
+      ],
+      "max": 5,
+      "rating": 4.2,
+      "color": "green",
+      "size": "XX-Small",
+      "type": "Shirts"
+    },
+    {
+      "id": "68",
+      "title": "Party Satin Gloves",
+      "price": 60,
+      "cat_prefix": "party",
+      "main_img": "https://via.placeholder.com/300?text=Party+Satin+Gloves",
       "Sub-imgs": [],
       "max": 4,
-      "rating": 4.3
+      "rating": 4,
+      "color": "sky",
+      "size": "X-Small",
+      "type": "T-shirts"
     }
   ]
 }

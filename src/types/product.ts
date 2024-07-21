@@ -8,7 +8,10 @@ type TProduct = {
   max?: number;
   quantity?: number; //???
   rating: number;
-  discount: number;
+  discount?: number;
+  color: string;
+  size: string;
+  type: string;
 };
 
 export default TProduct;
