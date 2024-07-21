@@ -1,5 +1,3 @@
-// import CategoriesHeadre from "./CategoriesHeadre";
-// import MainHeader from "./MainHeader";
 import useHeader from "@hooks/useHeader";
 
 import TextField from "@mui/material/TextField";
@@ -43,10 +41,6 @@ const Categories = [
   {
     name: "casual",
     path: "/categories/products/casual",
-  },
-  {
-    name: "all",
-    path: "/categories",
   },
 ];
 

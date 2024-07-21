@@ -7,7 +7,6 @@ import LottieHandler from "@components/feedback/LottieHandler";
 
 const Home = lazy(() => import("@pages/Home"));
 const Products = lazy(() => import("@pages/Products"));
-const Categories = lazy(() => import("@pages/Categories"));
 const AboutUs = lazy(() => import("@pages/AboutUs"));
 const SignUp = lazy(() => import("@pages/SignUp"));
 const SignIn = lazy(() => import("@pages/SignIn"));
@@ -73,14 +72,6 @@ const router = createBrowserRouter([
             });
           return true;
         },
-      },
-      {
-        path: "/categories",
-        element: (
-          <SuspensePage>
-            <Categories />
-          </SuspensePage>
-        ),
       },
       {
         path: "/about-us",

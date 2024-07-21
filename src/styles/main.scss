@@ -14,7 +14,6 @@
 
 // eCommerce
 @use "./components/eCommerce/CartItem";
-@use "./components/eCommerce/Category";
 @use "./components/eCommerce/HaederCounter";
 @use "./components/eCommerce/Product";
 @use "./components/eCommerce/Rating";
@@ -22,9 +21,6 @@
 
 // Feedback
 @use "./components/feedback/loading/Loading";
-@use "./components/feedback/skeleton/skeletonCategory";
-@use "./components/feedback/skeleton/skeletonProduct";
-@use "./components/feedback/skeleton/skeletonWishlist";
 @use "./components/feedback/LottieHandler.scss";
 @use "./components/feedback/SuspensePage";
 
@@ -39,7 +35,6 @@
 @use "./pages/AboutUs";
 @use "./pages/Account";
 @use "./pages/Cart.scss";
-@use "./pages/Categories.scss";
 @use "./pages/Error.scss";
 @use "./pages/Home.scss";
 @use "./pages/Orders.scss";

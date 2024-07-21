@@ -1,13 +1,11 @@
 import { type TLoading } from "@types/.";
 import { GridList } from "@components/.";
 import skeletonProduct from "../skeleton/skeletonProduct";
-import skeletonCategory from "../skeleton/skeletonCategory";
 import skeletonWishlist from "../skeleton/skeletonWishlist";
 import LottieHandler from "../LottieHandler";
 
 const skeleton = {
   product: skeletonProduct,
-  category: skeletonCategory,
   wishlist: skeletonWishlist,
 };
 
@@ -16,6 +14,7 @@ type TLoadingProps = {
   status: TLoading;
   children: React.ReactNode;
   type?: keyof typeof skeleton;
+  numSkeleton?: number;
 };
 
 const Loading = ({
@@ -23,14 +22,17 @@ const Loading = ({
   status,
   children,
   type = "product",
+  numSkeleton = 4,
 }: TLoadingProps) => {
-  const Component = skeleton[type];
+  const Skeleton = skeleton[type];
   if (status === "pending") {
     return (
-      <GridList recordItem={() => <Component />} records={Array(3).fill(0)} />
+      <GridList
+        recordItem={() => <Skeleton />}
+        records={Array(numSkeleton).fill(0)}
+      />
     );
-  }
-  if (status === "failed") {
+  } else if (status === "failed") {
     return <LottieHandler type="error" message={error} />;
   }
   return <>{children}</>;

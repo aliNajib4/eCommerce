@@ -17,32 +17,6 @@
   ],
   "wishlist": [],
   "orders": [],
-  "categories": [
-    {
-      "id": "1",
-      "title": "gym",
-      "prefix": "gym",
-      "img": "https://via.placeholder.com/300?text=Gym"
-    },
-    {
-      "id": "2",
-      "title": "formal",
-      "prefix": "formal",
-      "img": "https://via.placeholder.com/300?text=Formal"
-    },
-    {
-      "id": "3",
-      "title": "casual",
-      "prefix": "casual",
-      "img": "https://via.placeholder.com/300?text=Casual"
-    },
-    {
-      "id": "4",
-      "title": "party",
-      "prefix": "party",
-      "img": "https://via.placeholder.com/300?text=Party"
-    }
-  ],
   "products": [
     {
       "id": "1",
