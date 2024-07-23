@@ -1,7 +1,6 @@
-import { Link as routerLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAppSelector } from "@store/hooks";
 import { RootState } from "@store/store";
-import { Badge, Link } from "@mui/material";
 
 type TProps = {
   quantitySeletor: (state: RootState) => number;
@@ -11,16 +10,14 @@ type TProps = {
 
 const HaederCounter = ({ quantitySeletor, url, Icon }: TProps) => {
   const quantity = useAppSelector(quantitySeletor);
-
   return (
-    <Link
-      component={routerLink}
-      to={url}
-      sx={{ color: "black", textDecoration: "none" }}
-    >
-      <Badge badgeContent={quantity} color="error" max={9}>
+    <Link to={url} className="haederCounter">
+      <div>
         {Icon}
-      </Badge>
+        {quantity !== 0 && (
+          <span className="badge">{quantity > 9 ? "9+" : quantity}</span>
+        )}
+      </div>
     </Link>
   );
 };

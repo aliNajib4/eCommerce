@@ -1,0 +1,23 @@
+.topHeader {
+  text-align: center;
+  background-color: black;
+  color: white;
+  padding: 10px 0;
+  font-size: 14px;
+  a {
+    text-decoration: underline;
+    color: white;
+    margin: 0 12px 0 5px;
+    &:hover {
+      color: #80a0cc;
+    }
+  }
+  button {
+    svg {
+      transition: 0.15s;
+      &:hover {
+        color: #ccc;
+      }
+    }
+  }
+}

@@ -1,27 +1,13 @@
 import useHeader from "@hooks/useHeader";
-
-import TextField from "@mui/material/TextField";
-import {
-  ShoppingCart as ShoppingBag,
-  Bookmark as Wishlist,
-  KeyboardArrowDown as ArrowDown,
-} from "@mui/icons-material";
-import { Link as routerLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { CartQuantitySeletor } from "@store/cart/selector/selector";
 import { wishlistQuantitySeletor } from "@store/wishlist/selector/selector";
 import HaederCounter from "@components/eCommerce/HaederCounter";
-import {
-  Avatar,
-  Box,
-  Button,
-  IconButton,
-  Menu,
-  MenuItem,
-  Tooltip,
-  Typography,
-  Link,
-  Container,
-} from "@mui/material";
+import { TopHeader } from "@components/.";
+//svgs
+import ShoppingBag from "@assets/svgs/card.svg?react";
+import Wishlist from "@assets/svgs/wishlist.svg?react";
+import ArrowDown from "@assets/svgs/downArr.svg?react";
 
 const pagesAccount = [
   { name: "Account", path: "/profile" },
@@ -42,239 +28,89 @@ const Categories = [
     name: "casual",
     path: "/products/casual",
   },
+  {
+    name: "all",
+    path: "/products",
+  },
 ];
 
 const Header = () => {
-  const {
-    accessToken,
-    handleOpenUserMenu,
-    name,
-    anchorElUser,
-    handleCkickItem,
-    handleCloseUserMenu,
-  } = useHeader();
+  const { accessToken, name, showMenu, handleCkickItem, handleToggleUserMenu } =
+    useHeader();
   return (
-    <Box
-      sx={{
-        mt: 3,
-        mb: 8,
-        position: "relative",
-      }}
-      component="header"
-    >
-      <Container
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <Box>
-          <Link
-            component={routerLink}
-            to="/"
-            sx={{
-              textTransform: "uppercase",
-              fontSize: 32,
-              fontWeight: "900",
-              color: "black",
-              textDecoration: "none",
-              mr: 4,
-            }}
-          >
-            logo
-          </Link>
+    <>
+      {accessToken ? null : <TopHeader />}
+      <header>
+        <div className="container">
+          <div className="left">
+            <Link to="/" className="logo">
+              logo
+            </Link>
 
-          <Button
-            sx={{
-              color: "black",
-              "&:hover + .listCategories": {
-                display: "block",
-              },
-              "&:hover div": { rotate: "180deg" },
-              "&:has(+ :is(:hover)) div": {
-                rotate: "180deg",
-              },
-            }}
-            disableRipple
-          >
-            shop
-            <Box
-              sx={{
-                mt: -0.5,
-                transition: ".5s",
-              }}
-            >
-              <ArrowDown />
-            </Box>
-          </Button>
-          <Box
-            component="ul"
-            sx={{
-              display: "none",
-              position: "absolute",
-              top: "100%",
-              left: 0,
-              right: 0,
-              width: "100vw",
-              boxShadow: "0px 3px 5px 0px rgba(0, 0, 0, 0.2)",
-              backgroundColor: "white",
-              py: 2,
-              "&:hover": {
-                display: "block",
-              },
-            }}
-            className="listCategories"
-          >
-            <Container
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                gap: 5,
-              }}
-            >
-              {Categories.map(({ name, path }, idx) => (
-                <Link
-                  component={routerLink}
-                  to={path}
-                  sx={{ color: "black", textDecoration: "none" }}
-                >
-                  <Box
-                    component="li"
-                    key={idx}
-                    sx={{
-                      cursor: "pointer",
-                      px: 6,
-                      py: 3,
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      "&:hover": {
-                        bgcolor: "#eee",
-                      },
-                    }}
-                  >
+            <button className="shop">
+              shop
+              <div className="arrow">
+                <ArrowDown />
+              </div>
+            </button>
+            <div className="listCategories">
+              <div className="container">
+                {Categories.map(({ name, path }, idx) => (
+                  <Link className="categoryLink" key={idx} to={path}>
                     {name}
-                  </Box>
-                </Link>
-              ))}
-            </Container>
-          </Box>
-        </Box>
-        <TextField id="outlined" label="Search" size="small" />
-        <Box sx={{ display: "flex", alignItems: "center", gap: 2.5 }}>
-          <HaederCounter
-            quantitySeletor={wishlistQuantitySeletor}
-            url="/wishlist"
-            Icon={<Wishlist fontSize="medium" />}
-          />
-          <HaederCounter
-            quantitySeletor={CartQuantitySeletor}
-            url="/cart"
-            Icon={<ShoppingBag fontSize="medium" />}
-          />
-          {!accessToken ? (
-            <>
-              <Link component={routerLink} to="/signup">
-                <Button
-                  variant="outlined"
-                  size="small"
-                  sx={{
-                    color: "black",
-                    borderColor: "black",
-                    "&:hover": {
-                      borderColor: "#333",
-                      color: "#333",
-                      bgcolor: "#eee",
-                    },
-                  }}
-                >
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="right">
+            <HaederCounter
+              quantitySeletor={wishlistQuantitySeletor}
+              url="/wishlist"
+              Icon={<Wishlist width="14px" />}
+            />
+            <HaederCounter
+              quantitySeletor={CartQuantitySeletor}
+              url="/cart"
+              Icon={<ShoppingBag width="16px" />}
+            />
+            {!accessToken ? (
+              <>
+                <Link to="/signup" className="signup">
                   sign up
-                </Button>
-              </Link>
-              <Link component={routerLink} to="/signin">
-                <Button
-                  variant="contained"
-                  size="small"
-                  sx={{
-                    color: "white",
-                    bgcolor: "black",
-                    "&:hover": {
-                      bgcolor: "#333",
-                    },
-                  }}
-                >
+                </Link>
+                <Link to="/signin" className="signin">
                   sign in
-                </Button>
-              </Link>
-            </>
-          ) : (
-            <>
-              <Box>
-                <Tooltip title="Open settings">
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      cursor: "pointer",
-                    }}
-                    onClick={handleOpenUserMenu}
-                  >
-                    <Typography
-                      sx={{
-                        mr: 2,
-                        ml: 1,
-                        fontWeight: "bold",
-                        fontSize: "16px",
-                      }}
-                    >
-                      {name}
-                    </Typography>
-                    <IconButton sx={{ p: 0 }}>
-                      <Avatar>{name[0].toUpperCase()}</Avatar>
-                    </IconButton>
-                  </Box>
-                </Tooltip>
-                <Menu
-                  sx={{ mt: "45px" }}
-                  id="menu-appbar"
-                  anchorEl={anchorElUser}
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  open={!!anchorElUser}
-                  onClose={handleCloseUserMenu}
-                >
-                  {pagesAccount.map((setting) => (
-                    <Link
-                      component={routerLink}
-                      to={setting.path}
-                      key={setting.name}
-                      sx={{ color: "black", textDecoration: "none" }}
-                    >
-                      <MenuItem
+                </Link>
+              </>
+            ) : (
+              <div className="in-signin">
+                <div className="main" title="Open settings">
+                  <p className="name">{name}</p>
+                  <div className="avatar" onClick={handleToggleUserMenu}>
+                    {name[0].toUpperCase()}
+                  </div>
+                </div>
+                {showMenu && (
+                  <div className="menu">
+                    {pagesAccount.map((setting) => (
+                      <Link
+                        to={setting.path}
+                        key={setting.name}
+                        className="menuItem"
                         onClick={() => handleCkickItem(setting.name)}
-                        sx={{ p: 1 }}
                       >
-                        <Typography textAlign="center">
-                          {setting.name}
-                        </Typography>
-                      </MenuItem>
-                    </Link>
-                  ))}
-                </Menu>
-              </Box>
-            </>
-          )}
-        </Box>
-      </Container>
-    </Box>
+                        {setting.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      </header>
+    </>
   );
 };
 

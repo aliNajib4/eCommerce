@@ -1,0 +1,174 @@
+header {
+  margin-bottom: 64px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: white;
+  box-shadow: 0 2px 5px 0 black;
+  z-index: 999;
+  > .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      .logo {
+        text-transform: uppercase;
+        font-size: 32px;
+        font-weight: 900;
+        text-decoration: none;
+      }
+      .shop {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        color: black;
+        background-color: transparent;
+        padding: 5px;
+        border-radius: 5px;
+        &:hover {
+          background-color: #2090f030;
+        }
+        .arrow {
+          transition: 0.5s;
+        }
+        &:hover .arrow,
+        &:has(+ :is(:hover)) .arrow {
+          rotate: 180deg;
+        }
+        &:hover + .listCategories {
+          display: block;
+        }
+      }
+      .listCategories {
+        display: none;
+        position: absolute;
+        top: 85%;
+        left: 0;
+        right: 0;
+        width: 100vw;
+        box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
+        background-color: white;
+        padding: 16px 0;
+        transition-property: opacity;
+        transition-duration: 1s;
+        &:hover {
+          display: block;
+        }
+        .container {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 5;
+          .categoryLink {
+            display: block;
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+            padding: 12px 24px;
+            &:hover {
+              background-color: #eee;
+            }
+          }
+        }
+      }
+    }
+    .right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      .haederCounter {
+        position: relative;
+        .badge {
+          position: absolute;
+          top: -8px;
+          right: -10px;
+          background-color: #d22;
+          color: white;
+          width: 20px;
+          height: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50%;
+          font-size: 12px;
+        }
+      }
+      .signin,
+      .signup {
+        padding: 6px 12px;
+        border-radius: 8px;
+        text-transform: capitalize;
+        font-size: 12px;
+      }
+      .signup {
+        border: 1px black solid;
+        color: black;
+        &:hover {
+          border-color: #333;
+          color: #333;
+          background-color: #eee;
+        }
+      }
+      .signin {
+        color: white;
+        background-color: black;
+        &:hover {
+          background-color: #333;
+        }
+      }
+      .in-signin {
+        position: relative;
+        .main {
+          display: flex;
+          align-items: center;
+          .name {
+            margin-right: 4px;
+            font-weight: bold;
+            font-size: 16px;
+          }
+          .avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: #ddd;
+            display: flex;
+            cursor: pointer;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 24px;
+            user-select: none;
+          }
+        }
+        .menu {
+          position: absolute;
+          background-color: white;
+          top: 50px;
+          left: 0;
+          display: flex;
+          flex-direction: column;
+          border: 1px black solid;
+          padding: 8px;
+          border-radius: 5px;
+          gap: 4px;
+          .menuItem {
+            padding: 4px;
+            border-radius: 5px;
+            background-color: #aaa;
+            color: white;
+            transition: 0.1s;
+
+            &:hover {
+              color: black;
+              background-color: #eee;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -7,19 +7,19 @@ const useHeader = () => {
   const dispatch = useAppDispatch();
   const { user, accessToken } = useAppSelector((state) => state.auth);
 
-  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+  const [showMenu, setShowMenu] = useState<boolean>(false);
   const [showCategories, setShowCategories] = useState(false);
 
   const handleClickShop = () => {
     setShowCategories((prev) => !prev);
   };
 
-  const handleOpenUserMenu = (e: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(e.currentTarget);
+  const handleToggleUserMenu = () => {
+    setShowMenu((prev) => !prev);
   };
 
   const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+    setShowMenu(false);
   };
 
   const handleCkickItem = (value: string) => {
@@ -32,12 +32,12 @@ const useHeader = () => {
   }, [dispatch, accessToken]);
   return {
     accessToken,
-    handleOpenUserMenu,
     name: user?.firstName + " " + user?.lastName,
-    anchorElUser,
+    showMenu,
     handleCkickItem,
     handleCloseUserMenu,
     handleClickShop,
+    handleToggleUserMenu,
     showCategories,
   };
 };
