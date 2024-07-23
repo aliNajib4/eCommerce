@@ -58,6 +58,14 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/products",
+        element: (
+          <SuspensePage>
+            <Products />
+          </SuspensePage>
+        ),
+      },
+      {
         path: "/products/:id",
         element: (
           <SuspensePage>
@@ -65,7 +73,12 @@ const router = createBrowserRouter([
           </SuspensePage>
         ),
         loader: ({ params }) => {
-          if (typeof params.id !== "string" || !/^[a-z]+$/i.test(params.id))
+          const categories = ["gym", "formal", "casual", "party"];
+          if (
+            typeof params.id !== "string" ||
+            !/^[a-z]+$/i.test(params.id) ||
+            !categories.includes(params.id)
+          )
             throw new Response("Bad Request", {
               status: 400,
               statusText: "category not found",

@@ -8,7 +8,7 @@ const actGetProducts = createAsyncThunk(
   "products/actGetProducts",
   async (params: string, { rejectWithValue, signal }) => {
     const { error, errorMag, data } = await fetchGetData<TData>(
-      `/products?cat_prefix=${params === "all" ? "" : params}`,
+      `/products${params === "all" ? "" : "?cat_prefix=" + params}`,
       signal,
     );
     return error ? rejectWithValue(errorMag) : data;
