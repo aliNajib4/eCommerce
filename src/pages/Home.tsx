@@ -7,6 +7,7 @@ import gym from "@assets/images/gym.png";
 import formal from "@assets/images/formal.png";
 import casual from "@assets/images/casual.png";
 import party from "@assets/images/party.jpg";
+import { Link } from "react-router-dom";
 
 const dataComments = [
   {
@@ -57,7 +58,9 @@ const Home = () => {
           designed to bring out your individuality and cater to your sense of
           style.
         </p>
-        <a className="shop-btn">shop now</a>
+        <Link className="shop-btn" to="/products">
+          shop now
+        </Link>
         <ul className="anlytics">
           <li>
             <span>200+</span> International Brands
@@ -86,10 +89,10 @@ const Home = () => {
         <h2 className="title">BROWSE BY dress STYLE</h2>
         <div className="main">
           {dataCategories.map(({ name, image }) => (
-            <div key={name} className="category">
+            <Link to={"products/" + name} key={name} className="category">
               <p className="name">{name}</p>
               <img src={image} alt={name} />
-            </div>
+            </Link>
           ))}
         </div>
       </section>
