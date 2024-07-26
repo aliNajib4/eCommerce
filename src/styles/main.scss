@@ -1,4 +1,7 @@
-// src/styles/main.scss
+// Base
+@use "./base/reset";
+@use "./base/typography";
+@use "./base/mainStyle";
 
 // Variables
 @use "./variables/colors";
@@ -26,10 +29,6 @@
 
 // Forms
 @use "./components/forms/Input";
-
-// Base
-@use "./base/reset";
-@use "./base/typography";
 
 // Pages
 @use "./pages/AboutUs";

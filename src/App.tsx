@@ -9,13 +9,13 @@ const App = () => {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor} loading={null}>
-        <Header />
-        <div className="container flex min-h-screen flex-col font-mono">
-          <main className="flex-grow">
+        <div className="app">
+          <Header />
+          <main className="container">
             <Outlet />
           </main>
+          <Footer />
         </div>
-        <Footer />
       </PersistGate>
     </Provider>
   );
