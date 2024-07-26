@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 
 type TResponse = {
   accessToken: string;
@@ -14,7 +14,7 @@ type TResponse = {
 const actSignIn = createAsyncThunk(
   "auth/actSignIn",
   async (inputs: unknown, { rejectWithValue }) => {
-    let data;
+    let data: TResponse;
     let error = false;
     let errorMag = "";
     await axios

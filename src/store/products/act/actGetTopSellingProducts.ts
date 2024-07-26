@@ -5,7 +5,7 @@ import { fetchGetData } from "@util/.";
 const actGetTopSellingProducts = createAsyncThunk(
   "products/actGetTopSellingProducts",
   async (_, { rejectWithValue, signal }) => {
-    const { error, errorMag, data } = await fetchGetData>(
+    const { error, errorMag, data } = await fetchGetData(
       `/top-selling`,
       signal,
     );

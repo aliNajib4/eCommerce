@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import actGetProducts from "./act/actGetProducts";
 import actGetTopSellingProducts from "./act/actGetTopSellingProducts";
+import actGetProduct from "./act/actGetProduct";
 import { type TProduct, type TLoading } from "@types/.";
 
 interface TProductsState {
@@ -48,6 +49,19 @@ const productsSlice = createSlice({
         state.records = action.payload;
       })
       .addCase(actGetTopSellingProducts.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload as string;
+      })
+      .addCase(actGetProduct.pending, (state) => {
+        state.records = [];
+        state.loading = "pending";
+        state.error = null;
+      })
+      .addCase(actGetProduct.fulfilled, (state, action) => {
+        state.loading = "succeeded";
+        state.records = [action.payload];
+      })
+      .addCase(actGetProduct.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.payload as string;
       });

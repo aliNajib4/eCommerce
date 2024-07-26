@@ -15,6 +15,7 @@ const Wishlist = lazy(() => import("@pages/Wishlist"));
 const Account = lazy(() => import("@pages/Account"));
 const Orders = lazy(() => import("@pages/Orders"));
 const ProfileLayout = lazy(() => import("@pages/ProfileLayout"));
+const ProductPage = lazy(() => import("@pages/ProductPage"));
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,14 @@ const router = createBrowserRouter([
             <ProtecteRoute>
               <Wishlist />
             </ProtecteRoute>
+          </SuspensePage>
+        ),
+      },
+      {
+        path: "/product/:id",
+        element: (
+          <SuspensePage>
+            <ProductPage />
           </SuspensePage>
         ),
       },

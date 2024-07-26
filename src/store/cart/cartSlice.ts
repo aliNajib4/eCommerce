@@ -3,7 +3,12 @@ import { type TLoading, type TProduct } from "@types/.";
 import actGetCartProducts from "./act/actGetCartProducts";
 
 interface ICartState {
-  items: { id: string; quantity: number }[];
+  items: {
+    id: string;
+    quantity: number;
+    color: string;
+    size: string;
+  }[];
   productsFullinfo: TProduct[];
   loading: TLoading;
   error: null | string;
@@ -20,17 +25,9 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addToCart: (state, action: { payload: string }) => {
-      const idAdd = action.payload;
-      if (!state.items.some((item) => item.id === idAdd))
-        state.items.push({ id: idAdd, quantity: 1 });
-      else
-        state.items = state.items.map((item) => {
-          if (item.id === idAdd) {
-            return { ...item, quantity: item.quantity + 1 };
-          }
-          return item;
-        });
+    addToCart: (state, action: { payload: ICartState["items"][0] }) => {
+      if (!state.items.some(({ id }) => id === action.payload.id))
+        state.items.push({ ...action.payload });
     },
     removeFromCart: (state, action) => {
       state.items = state.items.filter((item) => item.id !== action.payload);

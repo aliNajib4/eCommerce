@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "@store/store";
 import axios from "axios";
 
-type TData = { productId: string; type: string };
+type TData = { productId: string; type: "add" | "remove" };
 
 const actToggleWishlistItem = createAsyncThunk(
   "wishlist/actToggleWishlistItem",
