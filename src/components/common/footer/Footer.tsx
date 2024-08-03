@@ -91,11 +91,11 @@ const Footer = () => {
             </ul>
           </div>
           {LINKS.map(({ title, links }) => (
-            <div className="linksGroup">
+            <div className="linksGroup" key={title}>
               <h6 className="title">{title}</h6>
               <ul className="linksList">
-                {links.map((link) => (
-                  <li className="link">
+                {links.map((link, idx) => (
+                  <li className="link" key={idx}>
                     <Link to="./">{link}</Link>
                   </li>
                 ))}
