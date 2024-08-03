@@ -1,0 +1,132 @@
+%head {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: capitalize;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.productsPage {
+  display: flex;
+  align-items: start;
+  gap: 20px;
+  .filter {
+    width: 300px;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px #eee solid;
+    padding: 20px;
+    .head {
+      @extend %head;
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+    .body {
+      .section {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        .headSec {
+          padding: 16px 0;
+          @extend %head;
+          margin-bottom: 16px;
+          user-select: none;
+          cursor: pointer;
+          .title {
+          }
+          svg {
+            transition: 0.25s;
+            rotate: -90deg;
+          }
+          &.close {
+            margin-bottom: 0;
+            svg {
+              rotate: 0deg;
+            }
+          }
+        }
+        &:not(.dress_style) .list {
+          margin-left: 12px;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          width: 100%;
+          .item {
+            position: relative;
+            cursor: pointer;
+            user-select: none;
+            width: fit-content;
+
+            .text {
+              display: block;
+              padding: 8px;
+              background-color: white;
+              border-radius: 12px;
+              border: #eee solid 2px;
+            }
+            [type="checkbox"] {
+              position: absolute;
+              opacity: 0;
+              cursor: pointer;
+              height: 100%;
+              width: 100%;
+              &:checked ~ .text {
+                background-color: black;
+                color: white;
+                border-color: transparent;
+              }
+            }
+            &:has([type="number"]) {
+              width: 100%;
+              [type="number"] {
+                width: 100%;
+              }
+            }
+          }
+        }
+        &.dress_style {
+          .list {
+            width: 100%;
+            margin-left: 12px;
+            .item {
+              display: flex;
+              justify-content: space-between;
+              padding: 4px 0;
+              cursor: pointer;
+              .text {
+                text-transform: capitalize;
+              }
+              svg {
+                rotate: -90deg;
+                translate: -16px 0;
+                cursor: pointer;
+                transition: 0.25s;
+              }
+              &:hover {
+                svg {
+                  translate: -10px 0;
+                }
+                .text {
+                  color: blue;
+                  font-weight: bold;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .applyBtn {
+      margin-top: 32px;
+      width: 100%;
+      background-color: black;
+      color: white;
+      border-radius: 20px;
+      padding: 10px 0;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+  }
+}
