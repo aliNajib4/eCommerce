@@ -3,14 +3,13 @@
 .product {
   width: 300px;
   .image {
-    //m-auto h-[128px] max-h-32 w-[128px] max-w-32 overflow-hidden rounded-full bg-gray-100 text-center
+    @include layout.center(true, true);
     height: 300px;
     width: 300px;
     background-color: var(--gray);
     border-radius: 20px;
     overflow: hidden;
-    @include layout.center(true, true);
-
+    border: 3px solid #e5e5e5;
     img {
       height: 100%;
     }

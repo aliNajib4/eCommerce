@@ -1,7 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "@store/store";
 import TOrder from "@types/order";
-import fetchGetData from "@util/fetchGetData";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "../../../firebase/config";
 
 const actGetOrders = createAsyncThunk(
   "orders/actGetOrders",
@@ -11,12 +12,13 @@ const actGetOrders = createAsyncThunk(
         user: { id: userId },
       },
     } = getState() as RootState;
-
-    const { error, errorMag, data } = await fetchGetData<TOrder[]>(
-      `/orders?userId=${userId}`,
-      signal,
-    );
-    return error ? rejectWithValue(errorMag) : data;
+    const q = query(collection(db, "orders"), where("userId", "==", userId));
+    try {
+      const data = await getDocs(q);
+      return data.docs.map((el) => el.data() as TOrder);
+    } catch (error) {
+      return rejectWithValue(error);
+    }
   },
 );
 

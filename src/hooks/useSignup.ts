@@ -26,7 +26,6 @@ const useSignup = () => {
     useCheckEmail();
 
   const submitForm: SubmitHandler<TInputs> = (data) => {
-    delete data.confim_password;
     dispatch(actSignUp(data))
       .unwrap()
       .then(() => Navigate("/signin?massage=Account_created_successfully"));

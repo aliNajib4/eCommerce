@@ -35,11 +35,11 @@ const Categories = [
 ];
 
 const Header = () => {
-  const { accessToken, name, showMenu, handleCkickItem, handleToggleUserMenu } =
+  const { user, name, showMenu, handleCkickItem, handleToggleUserMenu } =
     useHeader();
   return (
     <>
-      {accessToken ? null : <TopHeader />}
+      {user ? null : <TopHeader />}
       <header>
         <div className="container">
           <div className="left">
@@ -74,7 +74,7 @@ const Header = () => {
               url="/cart"
               Icon={<ShoppingBag width="16px" />}
             />
-            {!accessToken ? (
+            {!user ? (
               <>
                 <Link to="/signup" className="signup">
                   sign up

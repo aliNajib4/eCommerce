@@ -6,8 +6,6 @@ interface ICartState {
   items: {
     id: string;
     quantity: number;
-    color: string;
-    size: string;
   }[];
   productsFullinfo: TProduct[];
   loading: TLoading;

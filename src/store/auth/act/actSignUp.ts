@@ -1,26 +1,27 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth } from "../../../firebase/config";
 
 const actSignUp = createAsyncThunk(
   "auth/actSignUp",
-  async (inputs: unknown, { rejectWithValue }) => {
-    let data;
-    let error = false;
-    let errorMag = "";
-    await axios
-      .post("/signup", inputs)
-      .then((res) => {
-        data = res.data;
-      })
-      .catch((err) => {
-        error = true;
-        errorMag = err.respones?.data;
+  async (
+    inputs: {
+      firstName?: string;
+      lastName?: string;
+      email?: string;
+      password?: string;
+      confim_password?: string;
+    },
+    { rejectWithValue },
+  ) => {
+    try {
+      await createUserWithEmailAndPassword(auth, inputs.email, inputs.password);
+      updateProfile(auth.currentUser, {
+        displayName: `${inputs.firstName} ${inputs.lastName}`,
       });
-    await axios.post("/wishlist", {
-      useId: "0",
-      productsId: [],
-    });
-    return error ? rejectWithValue(errorMag) : data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
   },
 );
 

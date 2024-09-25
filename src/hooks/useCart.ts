@@ -29,7 +29,7 @@ const useCart = () => {
   const { loading: loadingPlaceOrder, error: errorPlaceOrder } = useAppSelector(
     (state) => state.orders,
   );
-  const accessToken = useAppSelector((state) => state.auth.accessToken);
+  const user = useAppSelector((state) => state.auth.user);
   const [openDialog, setOpenDialog] = useState(false);
 
   const products = productsFullinfo.map((el) => {
@@ -58,7 +58,7 @@ const useCart = () => {
     dispatch(cleanErrorOrders());
   };
   const handleClickCheckout = () => {
-    if (!accessToken) navigate("/signin?massage=Please_signin");
+    if (!user) navigate("/signin?massage=Please_signin");
     setOpenDialog(true);
   };
   const handleAcceptDialog = () => {

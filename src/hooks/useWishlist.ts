@@ -17,7 +17,10 @@ const useWishlist = () => {
   });
   const dispatch = useAppDispatch();
   useEffect(() => {
-    const promise = dispatch(actGetProductsWishlist());
+    let promise: { abort: () => void };
+    setTimeout(() => {
+      promise = dispatch(actGetProductsWishlist());
+    }, 300);
     return () => {
       promise.abort();
       dispatch(cleanUp());

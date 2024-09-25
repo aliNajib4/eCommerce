@@ -9,13 +9,13 @@ const ProtecteRoute = ({
   inSignin?: boolean;
   children: React.ReactNode;
 }) => {
-  const { accessToken } = useAppSelector((state) => state.auth);
+  const { user } = useAppSelector((state) => state.auth);
 
-  if (inSignin && accessToken) {
+  if (inSignin && user) {
     return <Navigate to="/" />;
   }
-  if (!inSignin && !accessToken) {
-    return <Navigate to="/signin?massage=Please_signin" />;
+  if (!inSignin && !user) {
+    return <Navigate to="/signin" />;
   }
   return children;
 };

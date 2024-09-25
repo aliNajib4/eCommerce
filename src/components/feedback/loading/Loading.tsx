@@ -22,15 +22,17 @@ const Loading = ({
   status,
   children,
   type = "product",
-  numSkeleton = 4,
+  numSkeleton = 3,
 }: TLoadingProps) => {
   const Skeleton = skeleton[type];
   if (status === "pending") {
     return (
-      <GridList
-        recordItem={() => <Skeleton />}
-        records={Array(numSkeleton).fill(0)}
-      />
+      <div className="skeletonLoad">
+        
+        {Array(numSkeleton).fill(0).map((_, idx)=>(
+          <div className="item" key={idx}><Skeleton /></div>
+        ))}
+      </div>
     );
   } else if (status === "failed") {
     return <LottieHandler type="error" message={error} />;

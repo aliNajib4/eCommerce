@@ -3,13 +3,14 @@ import actToggleWishlistItem from "./act/actToggleWishlistItem";
 import actGetProductsWishlist from "./act/actGetProductsWishlist";
 import actGetWishlist from "./act/actGetWishlist";
 import { type TProduct, type TLoading } from "@types/.";
-import { logout } from "@store/auth/authSlice";
+import { actLogOut } from "@store/auth/authSlice";
 
 type TWishlistState = {
   itemsId: string[];
   productsFullInfo: TProduct[];
   error: null | string;
   loadingProducts: TLoading;
+  loadingToggle: TLoading;
 };
 
 const initialState: TWishlistState = {
@@ -17,6 +18,7 @@ const initialState: TWishlistState = {
   error: null,
   productsFullInfo: [],
   loadingProducts: "idle",
+  loadingToggle: "idle",
 };
 
 const wishSlice = createSlice({
@@ -24,18 +26,24 @@ const wishSlice = createSlice({
   initialState,
   reducers: {
     cleanUp: (state) => {
-      const { productsFullInfo, error, loadingProducts } = initialState;
+      const { productsFullInfo, error, loadingProducts, loadingToggle } =
+        initialState;
       state.productsFullInfo = productsFullInfo;
       state.error = error;
       state.loadingProducts = loadingProducts;
+      state.loadingToggle = loadingToggle;
     },
   },
   extraReducers: (builder) => {
+    // toggle wishlist item
+
     builder
       .addCase(actToggleWishlistItem.pending, (state) => {
         state.error = null;
+        state.loadingToggle = "pending";
       })
       .addCase(actToggleWishlistItem.fulfilled, (state, action) => {
+        state.loadingToggle = "succeeded";
         const { productId, type } = action.payload;
         if (type === "add") state.itemsId.push(productId);
         else if (type === "remove") {
@@ -46,8 +54,11 @@ const wishSlice = createSlice({
         }
       })
       .addCase(actToggleWishlistItem.rejected, (state, action) => {
+        state.loadingToggle = "failed"
         state.error = action.payload as string;
       });
+
+      // get products wishlist
 
     builder
       .addCase(actGetProductsWishlist.pending, (state) => {
@@ -62,6 +73,9 @@ const wishSlice = createSlice({
         state.error = action.payload as string;
         state.loadingProducts = "failed";
       });
+
+      // get wishlist
+
     builder
       .addCase(actGetWishlist.pending, (state) => {
         state.error = null;
@@ -76,7 +90,9 @@ const wishSlice = createSlice({
         state.loadingProducts = "failed";
       });
 
-    builder.addCase(logout, (state) => {
+      // if log out in succeeded
+
+    builder.addCase(actLogOut.fulfilled, (state) => {
       Object.assign(state, initialState);
     });
   },

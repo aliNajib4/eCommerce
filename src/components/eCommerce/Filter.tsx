@@ -9,17 +9,13 @@ import {
 } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { Fragment } from "react/jsx-runtime";
-import { useState } from "react";
+import { memo, useState } from "react";
+import TInputs from "@types/filter";
 
 type TProps = {
   onChange: (data: TInputs) => void;
-};
-
-type TInputs = {
-  type: string[];
-  colors: string[];
-  size: string[];
-  price: number;
+  closeFilter: () => void;
+  isShow: boolean;
 };
 
 type TData = {
@@ -125,7 +121,7 @@ const data: TData[] = [
   },
 ];
 
-const Filter = ({ onChange }: TProps) => {
+const Filter = memo(({ onChange, closeFilter, isShow }: TProps) => {
   const { register, handleSubmit } = useForm<TInputs>({
     defaultValues: {
       type: [],
@@ -167,7 +163,7 @@ const Filter = ({ onChange }: TProps) => {
   };
 
   return (
-    <div className="filter">
+    <div className={"filter" + (isShow ? "" : " hide")}>
       <div className="head">
         <span>filter</span>
         <FilterSvg />
@@ -179,13 +175,17 @@ const Filter = ({ onChange }: TProps) => {
             <List key={item.title} {...item} />
           ))}
         </div>
-
-        <button className="applyBtn" type="submit">
-          apply filter
-        </button>
+        <div className="foot">
+          <button className="applyBtn" type="submit">
+            apply filter
+          </button>
+          <button className="cancelBtn" onClick={closeFilter}>
+            cancel
+          </button>
+        </div>
       </form>
     </div>
   );
-};
+});
 
 export default Filter;

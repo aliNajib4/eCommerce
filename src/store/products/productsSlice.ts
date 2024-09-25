@@ -26,6 +26,7 @@ const productsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      // get products
       .addCase(actGetProducts.pending, (state) => {
         state.records = [];
         state.loading = "pending";
@@ -39,6 +40,9 @@ const productsSlice = createSlice({
         state.loading = "failed";
         state.error = action.payload as string;
       })
+
+      // get top-selling products
+
       .addCase(actGetTopSellingProducts.pending, (state) => {
         state.records = [];
         state.loading = "pending";
@@ -51,7 +55,11 @@ const productsSlice = createSlice({
       .addCase(actGetTopSellingProducts.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.payload as string;
-      })
+      });
+
+    // get one product
+
+    builder
       .addCase(actGetProduct.pending, (state) => {
         state.records = [];
         state.loading = "pending";
@@ -68,6 +76,6 @@ const productsSlice = createSlice({
   },
 });
 
-export { actGetProducts, actGetTopSellingProducts };
+export { actGetProducts, actGetTopSellingProducts, actGetProduct };
 export const { cleanUp } = productsSlice.actions;
 export default productsSlice.reducer;

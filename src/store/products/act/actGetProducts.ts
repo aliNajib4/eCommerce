@@ -1,17 +1,23 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { type TProduct } from "@types/.";
-import { fetchGetData } from "@util/.";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "../../../firebase/config";
 
-type TData = TProduct[];
+type TData = TProduct;
 
 const actGetProducts = createAsyncThunk(
   "products/actGetProducts",
-  async (params: string, { rejectWithValue, signal }) => {
-    const { error, errorMag, data } = await fetchGetData<TData>(
-      `/products${params === "all" ? "" : "?cat_prefix=" + params}`,
-      signal,
-    );
-    return error ? rejectWithValue(errorMag) : data;
+  async ({ type }: { type: string }, { rejectWithValue, signal }) => {
+    let q = query(collection(db, "products"), where("cat_prefix", "==", type));
+    if (type === "all") {
+      q = query(collection(db, "products"));
+    }
+    try {
+      const docSnap = await getDocs(q);
+      return docSnap.docs.map((el) => el.data() as TData);
+    } catch (error) {
+      return rejectWithValue(error);
+    }
   },
 );
 

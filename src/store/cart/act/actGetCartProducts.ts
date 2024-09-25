@@ -1,21 +1,25 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "@store/store";
 import { type TProduct } from "@types/.";
-import { fetchGetData } from "@util/.";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "../../../firebase/config";
 
-type TData = TProduct[];
+type TData = TProduct;
 
 const actGetCartProducts = createAsyncThunk(
   "cart/actGetCartProducts",
   async (_, { rejectWithValue, getState, signal }) => {
     const { cart } = getState() as RootState;
-    const ids = cart.items.map((el) => "id=" + el.id).join("&");
-    const url = `/products?${ids}`;
-    const { error, errorMag, data } = await fetchGetData<TData>(url, signal);
-    const allProducts = data.filter((el) =>
-      cart.items.some((item) => item.id === el.id),
-    );
-    return error ? rejectWithValue(errorMag) : allProducts;
+    const ids = cart.items.map((el) => el.id);
+    if (ids.length === 0) return [];
+
+    const q = query(collection(db, "products"), where("id", "in", ids));
+    try {
+      const docSnap = await getDocs(q);
+      return docSnap.docs.map((el) => el.data() as TData);
+    } catch (error) {
+      return rejectWithValue(error);
+    }
   },
 );
 

@@ -1,8 +1,7 @@
 import { Price, Rating } from "@components/index";
 import { addToCart } from "@store/cart/cartSlice";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
-import actGetProduct from "@store/products/act/actGetProduct";
-import { cleanUp } from "@store/products/productsSlice";
+import { cleanUp, actGetProduct } from "@store/products/productsSlice";
 import { actToggleWishlistItem } from "@store/wishlist/wishlistSlice";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -16,7 +15,7 @@ const ProductPage = () => {
   } = useAppSelector((state) => state.products);
   const items = useAppSelector((state) => state.cart.items);
   const wishlistItems = useAppSelector((state) => state.wishlist.itemsId);
-  const accessToken = useAppSelector((state) => state.auth.accessToken);
+  const user = useAppSelector((state) => state.auth.user);
   const { id: ParamId } = useParams();
 
   const [color, setColor] = useState("");
@@ -25,26 +24,29 @@ const ProductPage = () => {
   const [image, setImage] = useState(0);
   const [LoadingLike, setLoadingLike] = useState(false);
 
-  const listImages = product
-    ? [product["main_img"], ...product["Sub-imgs"]]
-    : [];
+  const listImages =
+    loading === "succeeded" ? [product?.main_img, ...product.sub_imgs] : [];
   const isAdd = color !== "" && size !== "" && quantity !== 0 ? true : false;
   const isAddCart = items.some((item) => item.id === product?.id);
   const isAddWishlist = wishlistItems.some((item) => item === product?.id);
+  const isDisable = isAddCart || LoadingLike;
 
   const handleMainImage = (idx: number) => {
     setImage(idx);
   };
 
   const handleColor = (color: string) => {
+    if (isDisable) return;
     setColor(color);
   };
 
   const handleSize = (size: string) => {
+    if (isDisable) return;
     setSize(size);
   };
 
   const handleQuantity = (type: 1 | -1) => {
+    if (isDisable) return;
     setQuantity((prev) =>
       type === -1
         ? prev === 0
@@ -57,9 +59,11 @@ const ProductPage = () => {
   };
 
   const handleAdd = () => {
-    dispatch(addToCart({ id: product.id, color, size, quantity }));
+    if (isDisable) return;
+    dispatch(addToCart({ id: product.id, quantity }));
   };
   const handleLike = () => {
+    if (LoadingLike) return;
     setLoadingLike(true);
     dispatch(actToggleWishlistItem(product.id))
       .unwrap()
@@ -88,7 +92,7 @@ const ProductPage = () => {
         <div className="mainImg">
           <img src={listImages[image]} alt="main image" />
         </div>
-        {product["Sub-imgs"].length !== 0 && (
+        {product.sub_imgs && product?.sub_imgs.length !== 0 && (
           <ul className="subImgs">
             {listImages.map((img, idx) => (
               <li
@@ -103,7 +107,7 @@ const ProductPage = () => {
         )}
       </div>
       <div className="info">
-        <h1 className="title">{product["title"]}</h1>
+        <h1 className="title">{product.name}</h1>
         <Rating rating={product["rating"]} width={24} />
         <Price price={product["price"]} discount={product["discount"]} />
         <p className="description line-clamp-2">{product["description"]}</p>
@@ -151,7 +155,7 @@ const ProductPage = () => {
           <button
             className="likeBtn"
             onClick={handleLike}
-            disabled={LoadingLike || !accessToken}
+            disabled={LoadingLike || !user}
           >
             {LoadingLike ? "loading..." : isAddWishlist ? "liked" : "like"}
           </button>

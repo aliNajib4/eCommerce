@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import TLoading from "@types/loading";
 import actSignUp from "./act/actSignUp";
 import actSignIn from "./act/actSignIn";
+import actLogOut from "./act/actLogOut";
 
 type TInitialState = {
   loading: TLoading;
@@ -12,14 +13,12 @@ type TInitialState = {
     firstName: string;
     lastName: string;
   } | null;
-  accessToken: string | null;
 };
 
 const initialState: TInitialState = {
   loading: "idle",
   error: null,
   user: null,
-  accessToken: null,
 };
 
 const authSlice = createSlice({
@@ -30,12 +29,14 @@ const authSlice = createSlice({
       state.loading = "idle";
       state.error = null;
     },
-    logout: (state) => {
-      state.user = null;
-      state.accessToken = null;
+
+    getUser: (state, action) => {
+      state.user = action.payload;
     },
   },
   extraReducers: (builder) => {
+    // signup
+
     builder
       .addCase(actSignUp.pending, (state) => {
         state.loading = "pending";
@@ -48,23 +49,39 @@ const authSlice = createSlice({
         state.loading = "failed";
         state.error = action.payload as string;
       });
+
+      // signin
+
     builder
       .addCase(actSignIn.pending, (state) => {
         state.loading = "pending";
         state.error = null;
       })
-      .addCase(actSignIn.fulfilled, (state, action) => {
+      .addCase(actSignIn.fulfilled, (state) => {
         state.loading = "succeeded";
-        state.accessToken = action.payload.accessToken;
-        state.user = action.payload.user;
       })
       .addCase(actSignIn.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload as string;
+      });
+
+      // log out
+
+    builder
+      .addCase(actLogOut.pending, (state) => {
+        state.loading = "pending";
+        state.error = null;
+      })
+      .addCase(actLogOut.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(actLogOut.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.payload as string;
       });
   },
 });
 
-export { actSignUp, actSignIn };
-export const { cleanUp, logout } = authSlice.actions;
+export { actSignUp, actSignIn, actLogOut };
+export const { cleanUp, getUser } = authSlice.actions;
 export default authSlice.reducer;

@@ -1,11 +1,11 @@
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { useEffect, useState } from "react";
-import { logout } from "@store/auth/authSlice";
+import { actLogOut } from "@store/auth/authSlice";
 import actGetWishlist from "@store/wishlist/act/actGetWishlist";
 
 const useHeader = () => {
   const dispatch = useAppDispatch();
-  const { user, accessToken } = useAppSelector((state) => state.auth);
+  const { user } = useAppSelector((state) => state.auth);
 
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const [showCategories, setShowCategories] = useState(false);
@@ -24,14 +24,16 @@ const useHeader = () => {
 
   const handleCkickItem = (value: string) => {
     handleCloseUserMenu();
-    if (value === "Logout") dispatch(logout());
+    if (value === "Logout") dispatch(actLogOut());
   };
 
   useEffect(() => {
-    if (accessToken) dispatch(actGetWishlist());
-  }, [dispatch, accessToken]);
+    if (user) {
+      dispatch(actGetWishlist());
+    }
+  }, [dispatch, user]);
   return {
-    accessToken,
+    user,
     name: user?.firstName + " " + user?.lastName,
     showMenu,
     handleCkickItem,
