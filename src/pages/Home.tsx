@@ -77,8 +77,8 @@ const Home = () => {
         <h2 className="title">top selling</h2>
         <Loading error={error} status={loading} numSkeleton={4} type="product">
           <div className="products">
-            {records.map((record) => (
-              <div key={record.id} className="product">
+            {records.map((record, idx) => (
+              <div key={idx} className="product">
                 <Product {...record} />
               </div>
             ))}
@@ -88,8 +88,8 @@ const Home = () => {
       <section className="categories">
         <h2 className="title">BROWSE BY dress STYLE</h2>
         <div className="main">
-          {dataCategories.map(({ name, image }) => (
-            <Link to={"products/" + name} key={name} className="category">
+          {dataCategories.map(({ name, image }, idx) => (
+            <Link to={"products/" + name} key={idx} className="category">
               <p className="name">{name}</p>
               <img src={image} alt={name} />
             </Link>
